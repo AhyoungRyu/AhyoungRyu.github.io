@@ -6,6 +6,10 @@ type ResumePageProps = {
   params: Promise<{ locale: string }>;
 };
 
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
 export default async function ResumePage({ params }: ResumePageProps) {
   const { locale } = await params;
 
