@@ -1,0 +1,1 @@
+import{r as e}from"./framework-DjPHiq1u.js";var t=e();function n({pdfHref:e,pdfLabel:n,printLabel:r}){return(0,t.jsxs)(`div`,{className:`print-actions`,children:[(0,t.jsx)(`a`,{className:`text-link`,href:e,download:!0,children:n}),(0,t.jsx)(`button`,{className:`text-button`,onClick:()=>window.print(),type:`button`,children:r})]})}export{n as PrintActions};
