@@ -14,6 +14,18 @@ type LocaleMetadata = {
     description: string;
     locale: "ko_KR" | "en_US";
     type: "profile";
+    images: Array<{
+      url: string;
+      width: number;
+      height: number;
+      alt: string;
+    }>;
+  };
+  twitter: {
+    card: "summary_large_image";
+    title: string;
+    description: string;
+    images: string[];
   };
 };
 
@@ -54,6 +66,20 @@ export function buildLocaleMetadata(
       description,
       locale: locale === "ko" ? "ko_KR" : "en_US",
       type: "profile",
+      images: [
+        {
+          url: "/og.png",
+          width: 1200,
+          height: 630,
+          alt: "Ahyoung Ryu · Senior Software Engineer · Front-end",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og.png"],
     },
   };
 }

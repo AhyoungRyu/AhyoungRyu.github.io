@@ -25,4 +25,19 @@ describe("localized metadata", () => {
       "/en/projects/ai-agent-messenger/",
     );
   });
+
+  it("includes the social card in Open Graph and Twitter metadata", () => {
+    const metadata = buildLocaleMetadata("en", "/");
+
+    expect(metadata.openGraph.images).toEqual([
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Ahyoung Ryu · Senior Software Engineer · Front-end",
+      },
+    ]);
+    expect(metadata.twitter.card).toBe("summary_large_image");
+    expect(metadata.twitter.images).toEqual(["/og.png"]);
+  });
 });

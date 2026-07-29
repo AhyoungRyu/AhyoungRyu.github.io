@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import "../../globals.css";
 import { buildLocaleMetadata } from "@/src/resume/metadata";
+import { getRequestOrigin } from "@/src/resume/requestOrigin";
 import { locales, type Locale } from "@/src/resume/types";
 
 type LocalizedLayoutProps = {
@@ -17,7 +18,10 @@ export async function generateMetadata({
     return {};
   }
 
-  return buildLocaleMetadata(locale as Locale, "/");
+  return {
+    ...buildLocaleMetadata(locale as Locale, "/"),
+    metadataBase: new URL(await getRequestOrigin()),
+  };
 }
 
 export default async function LocalizedLayout({
