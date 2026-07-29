@@ -4,6 +4,8 @@ A bilingual Korean/English résumé, selected-project portfolio, and complete
 career archive. The content lives in one typed source so both languages and the
 downloadable PDFs stay aligned.
 
+Public site: <https://ahyoungryu.github.io>
+
 ## Local development
 
 Requires Node.js 22.13 or newer.
@@ -32,6 +34,9 @@ npm run verify
 
 `npm run pdf` expects the local development server at
 `http://localhost:3002`. Override it with `RESUME_BASE_URL` when needed.
+
+After committing and pushing a verified change to `main`, GitHub Actions
+publishes the updated static site automatically. GitHub Pages hosting is free.
 
 ## Commands
 
