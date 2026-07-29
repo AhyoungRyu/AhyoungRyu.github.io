@@ -1,4 +1,5 @@
 import type { Locale } from "../types";
+import { PrintActions } from "./PrintActions";
 
 type ProfileRailProps = {
   locale: Locale;
@@ -20,6 +21,8 @@ const labels = {
     community: "오픈소스·발표",
     archive: "전체 기록",
     alternate: "English",
+    pdf: "PDF 다운로드",
+    print: "인쇄",
   },
   en: {
     nav: "Resume sections",
@@ -29,6 +32,8 @@ const labels = {
     community: "Open source & speaking",
     archive: "Full archive",
     alternate: "한국어",
+    pdf: "Download PDF",
+    print: "Print",
   },
 } as const;
 
@@ -67,6 +72,11 @@ export function ProfileRail({ locale, profile }: ProfileRailProps) {
       </nav>
 
       <div className="rail-actions">
+        <PrintActions
+          pdfHref={`/resume-ahyoung-ryu-${locale}.pdf`}
+          pdfLabel={copy.pdf}
+          printLabel={copy.print}
+        />
         <a className="text-link" href={`mailto:${profile.email}`}>
           {profile.email}
         </a>
