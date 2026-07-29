@@ -11,6 +11,12 @@ function localizedPath(locale: Locale, path: string): string {
 }
 
 export function getResume(locale: Locale) {
+  const apacheProject = resumeContent.projects.find(
+    (project) => project.id === "apache-zeppelin",
+  );
+  const speakingGroup = resumeContent.archiveGroups.find(
+    (group) => group.id === "teaching-speaking",
+  );
   const selectedProjects = resumeContent.projects
     .filter((project) => project.selected)
     .slice(0, 6)
@@ -66,6 +72,24 @@ export function getResume(locale: Locale) {
         })),
     })),
     selectedProjects,
+    credibility: [
+      apacheProject
+        ? {
+            eyebrow: "Apache Software Foundation",
+            title: text(apacheProject.title, locale),
+            description: apacheProject.outcomes[locale][0],
+            href: localizedPath(locale, `/projects/${apacheProject.slug}/`),
+          }
+        : undefined,
+      speakingGroup
+        ? {
+            eyebrow: locale === "ko" ? "Teaching & Speaking" : "Community",
+            title: text(speakingGroup.title, locale),
+            description: text(speakingGroup.description, locale),
+            href: localizedPath(locale, "/archive/"),
+          }
+        : undefined,
+    ].filter((item) => item !== undefined),
     education: resumeContent.education.map((education) => ({
       school: education.school,
       degree: text(education.degree, locale),
