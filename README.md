@@ -39,4 +39,5 @@ npm run verify
 - `npm test` — run content, selector, component, and metadata tests
 - `npm run pdf` — regenerate the Korean and English PDFs
 - `npm run verify` — lint, test, build, and inspect all rendered routes
+- `npm run export:static` — prepare the public GitHub Pages build
 - `npm run start` — serve the production build locally
