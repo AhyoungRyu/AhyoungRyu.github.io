@@ -1,23 +1,11 @@
 type SectionHeadingProps = {
-  index: string;
   title: string;
-  description?: string;
 };
 
-export function SectionHeading({
-  index,
-  title,
-  description,
-}: SectionHeadingProps) {
+export function SectionHeading({ title }: SectionHeadingProps) {
   return (
     <header className="section-heading">
-      <span className="section-index" aria-hidden="true">
-        {index}
-      </span>
-      <div>
-        <h2>{title}</h2>
-        {description ? <p>{description}</p> : null}
-      </div>
+      <h2>{title}</h2>
     </header>
   );
 }

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import type { Locale } from "../types";
-import { ProfileRail } from "./ProfileRail";
+import { ResumeHeader } from "./ResumeHeader";
 
 type SiteShellProps = {
   locale: Locale;
@@ -23,7 +23,7 @@ export function SiteShell({ locale, profile, children }: SiteShellProps) {
         {skipLabel}
       </a>
       <div className="site-shell">
-        <ProfileRail locale={locale} profile={profile} />
+        <ResumeHeader locale={locale} profile={profile} />
         <main id="main-content" className="resume-main">
           {children}
         </main>

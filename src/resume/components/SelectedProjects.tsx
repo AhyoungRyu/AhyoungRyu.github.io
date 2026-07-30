@@ -1,3 +1,5 @@
+import type { Locale } from "../types";
+
 type ProjectSummary = {
   id: string;
   title: string;
@@ -9,29 +11,30 @@ type ProjectSummary = {
 };
 
 type SelectedProjectsProps = {
+  locale: Locale;
   projects: ProjectSummary[];
 };
 
-export function SelectedProjects({ projects }: SelectedProjectsProps) {
+export function SelectedProjects({ locale, projects }: SelectedProjectsProps) {
+  const detailLabel = locale === "ko" ? "자세히 보기" : "Read details";
+
   return (
-    <div className="project-grid">
-      {projects.map((project, index) => (
-        <article className="project-card" key={project.id}>
-          <a href={project.href}>
-            <header>
-              <span className="project-number">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <span className="project-company">{project.company}</span>
-            </header>
-            <div>
-              <h3>{project.title}</h3>
-              <p>{project.summary}</p>
-            </div>
-            <footer>
-              <span>{project.period}</span>
-              <span aria-hidden="true">↗</span>
-            </footer>
+    <div className="project-list">
+      {projects.map((project) => (
+        <article className="project-row" key={project.id}>
+          <div className="project-meta">
+            <span>{project.company}</span>
+            <span>{project.period.replaceAll("—", "-")}</span>
+          </div>
+          <div className="project-copy">
+            <h3>
+              <a href={project.href}>{project.title}</a>
+            </h3>
+            <p>{project.summary}</p>
+          </div>
+          <a className="row-link" href={project.href}>
+            {detailLabel}
+            <span aria-hidden="true"> →</span>
           </a>
         </article>
       ))}

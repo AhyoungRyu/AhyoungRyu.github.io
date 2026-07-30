@@ -1,0 +1,86 @@
+import type { Locale } from "../types";
+
+type AdditionalRecordProps = {
+  locale: Locale;
+  archiveHref: string;
+  record: {
+    openSource: string;
+    teaching: string;
+    education: {
+      school: string;
+      degree: string;
+      period: string;
+    }[];
+    languages: {
+      name: string;
+      proficiency: string;
+    }[];
+  };
+};
+
+const labels = {
+  ko: {
+    openSource: "오픈소스",
+    teaching: "강의와 발표",
+    education: "학력",
+    languages: "언어",
+    archive: "전체 경력과 발표 기록 보기",
+  },
+  en: {
+    openSource: "Open source",
+    teaching: "Teaching and talks",
+    education: "Education",
+    languages: "Languages",
+    archive: "View the full archive",
+  },
+} as const;
+
+export function AdditionalRecord({
+  locale,
+  archiveHref,
+  record,
+}: AdditionalRecordProps) {
+  const copy = labels[locale];
+
+  return (
+    <div className="additional-grid">
+      <div className="additional-evidence">
+        <article>
+          <h3>{copy.openSource}</h3>
+          <p>{record.openSource}</p>
+        </article>
+        <article>
+          <h3>{copy.teaching}</h3>
+          <p>{record.teaching}</p>
+        </article>
+      </div>
+
+      <div className="additional-facts">
+        <section>
+          <h3>{copy.education}</h3>
+          {record.education.map((education) => (
+            <div className="fact-item" key={education.school}>
+              <strong>{education.school}</strong>
+              <span>{education.degree}</span>
+              <span>{education.period}</span>
+            </div>
+          ))}
+        </section>
+        <section>
+          <h3>{copy.languages}</h3>
+          {record.languages.map((language) => (
+            <div className="language-row" key={language.name}>
+              <strong>{language.name}</strong>
+              <span>{language.proficiency}</span>
+            </div>
+          ))}
+        </section>
+      </div>
+
+      <a className="archive-link" href={archiveHref}>
+        {copy.archive}
+        <span aria-hidden="true"> →</span>
+      </a>
+    </div>
+  );
+}
