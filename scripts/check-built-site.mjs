@@ -23,7 +23,7 @@ function countMatches(value, pattern) {
   return [...value.matchAll(pattern)].length;
 }
 
-export function inspectRenderedHtml(html, expectedLocale) {
+export function inspectRenderedHtml(html, expectedLocale, route = "") {
   const issues = [];
   const starterResidue =
     /Starter Project|Codex is working|react-loading-skeleton|codex-preview/i;
@@ -62,6 +62,20 @@ export function inspectRenderedHtml(html, expectedLocale) {
 
   if (!/<meta[^>]+property=["']og:image["'][^>]*>/i.test(html)) {
     issues.push("og:image is missing");
+  }
+
+  if (/^\/(?:ko|en)\/?$/.test(route)) {
+    const requiredHomeStructure = [
+      /<header[^>]+class=["'][^"']*\bresume-header\b[^"']*["']/i,
+      /<section[^>]+class=["'][^"']*\bintro-section\b[^"']*["']/i,
+      /<section[^>]+id=["']experience["']/i,
+      /<section[^>]+id=["']projects["']/i,
+      /<section[^>]+id=["']record["']/i,
+    ];
+
+    if (requiredHomeStructure.some((pattern) => !pattern.test(html))) {
+      issues.push("compact resume home structure is incomplete");
+    }
   }
 
   return issues;
@@ -110,7 +124,7 @@ export async function checkBuiltSite(rootDirectory = process.cwd()) {
     }
 
     const locale = route.split("/")[1];
-    const issues = inspectRenderedHtml(await response.text(), locale);
+    const issues = inspectRenderedHtml(await response.text(), locale, route);
     failures.push(...issues.map((issue) => `${route}: ${issue}`));
   }
 

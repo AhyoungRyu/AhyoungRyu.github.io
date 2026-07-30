@@ -1084,6 +1084,598 @@ a:focus-visible {
   }
 }
 
+/* Compact resume home */
+
+.site-shell {
+  display: block;
+  width: min(100%, 980px);
+  min-height: 100vh;
+  margin: 0 auto;
+  border-right: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  background: var(--white);
+}
+
+.resume-header {
+  display: grid;
+  min-height: 74px;
+  grid-template-columns: minmax(120px, 1fr) auto auto;
+  gap: 2rem;
+  align-items: center;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--line);
+  background: var(--white);
+}
+
+.header-name {
+  width: fit-content;
+  font-size: 0.88rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.resume-header nav,
+.header-actions,
+.header-actions .print-actions {
+  display: flex;
+  align-items: center;
+}
+
+.resume-header nav {
+  gap: 1.35rem;
+}
+
+.resume-header nav a,
+.header-actions a,
+.header-actions button {
+  color: var(--muted);
+  font-size: 0.74rem;
+  text-decoration: none;
+}
+
+.resume-header nav a:hover,
+.header-actions a:hover,
+.header-actions button:hover {
+  color: var(--accent);
+}
+
+.header-actions {
+  gap: 1.1rem;
+}
+
+.header-actions .print-actions {
+  flex-direction: row;
+  gap: 1.1rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.intro-section {
+  padding: clamp(4.5rem, 9vw, 6rem) clamp(1.5rem, 7vw, 4.5rem)
+    clamp(4.5rem, 8vw, 5.5rem);
+  border-bottom: 1px solid var(--ink);
+}
+
+.intro-meta {
+  margin: 0 0 1.5rem;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.intro-section h1 {
+  max-width: 850px;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.6rem, 7.5vw, 5.2rem);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 1.02;
+}
+
+[lang="ko"] .intro-section h1 {
+  font-family:
+    "Pretendard Variable", Pretendard, Inter, ui-sans-serif, sans-serif;
+  font-size: clamp(3.3rem, 7vw, 4.7rem);
+  font-weight: 760;
+  letter-spacing: -0.065em;
+  word-break: keep-all;
+}
+
+.intro-summary {
+  max-width: 720px;
+  margin: 1.7rem 0 0;
+  color: #3f423c;
+  font-size: clamp(1.05rem, 1.8vw, 1.22rem);
+  line-height: 1.65;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.35rem;
+  margin-top: 2rem;
+}
+
+.contact-links a {
+  font-size: 0.78rem;
+}
+
+.resume-main {
+  min-width: 0;
+  background: var(--white);
+}
+
+.resume-section {
+  padding: clamp(3.5rem, 7vw, 4.5rem) clamp(1.5rem, 7vw, 4.5rem);
+  border-bottom: 1px solid var(--ink);
+  scroll-margin-top: 1rem;
+}
+
+.section-heading {
+  display: block;
+  margin: 0 0 2rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+}
+
+[lang="ko"] .section-heading h2 {
+  font-family:
+    "Pretendard Variable", Pretendard, Inter, ui-sans-serif, sans-serif;
+  font-weight: 740;
+  letter-spacing: -0.045em;
+}
+
+.experience-list {
+  border-top: 1px solid var(--ink);
+}
+
+.experience-item {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding: 2.15rem 0 2.4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.experience-item:last-child {
+  border-bottom: 0;
+}
+
+.experience-date {
+  display: flex;
+  gap: 0.3rem;
+  padding-top: 0.25rem;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.7rem;
+}
+
+.experience-title-row {
+  display: block;
+}
+
+.experience-title-row h3 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.55rem, 3vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+[lang="ko"] .experience-title-row h3 {
+  font-family:
+    "Pretendard Variable", Pretendard, Inter, ui-sans-serif, sans-serif;
+  font-weight: 720;
+}
+
+.experience-title-row h3 a {
+  text-decoration: none;
+}
+
+.role-line {
+  margin: 0.45rem 0 0;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.experience-summary {
+  max-width: 680px;
+  margin: 0.9rem 0;
+  font-size: 0.93rem;
+}
+
+.impact-list {
+  display: grid;
+  gap: 0.45rem;
+  max-width: 700px;
+  margin: 0;
+  padding: 0;
+  color: #484b44;
+  list-style: none;
+}
+
+.impact-list li {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 0.86rem;
+}
+
+.impact-list li::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--accent);
+  content: "•";
+}
+
+.project-list {
+  border-top: 1px solid var(--ink);
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) auto;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+  padding: 1.9rem 0 2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.project-row:last-child {
+  border-bottom: 0;
+}
+
+.project-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 0.2rem;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.68rem;
+}
+
+.project-copy h3 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+[lang="ko"] .project-copy h3 {
+  font-family:
+    "Pretendard Variable", Pretendard, Inter, ui-sans-serif, sans-serif;
+  font-weight: 720;
+}
+
+.project-copy h3 a {
+  text-decoration: none;
+}
+
+.project-copy p {
+  max-width: 570px;
+  margin: 0.65rem 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.row-link {
+  padding-top: 0.2rem;
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.additional-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(250px, 0.85fr);
+  gap: 2.5rem clamp(2.5rem, 7vw, 5rem);
+  border-top: 1px solid var(--ink);
+}
+
+.additional-evidence article {
+  padding: 1.55rem 0 1.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.additional-grid h3 {
+  margin: 0 0 0.65rem;
+  color: var(--accent);
+  font-size: 0.76rem;
+}
+
+.additional-evidence p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.additional-facts {
+  display: grid;
+  gap: 1.75rem;
+  padding-top: 1.55rem;
+}
+
+.fact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.fact-item strong,
+.language-row strong {
+  font-size: 0.86rem;
+}
+
+.fact-item span,
+.language-row span {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.language-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.language-row span {
+  text-align: right;
+}
+
+.archive-link {
+  grid-column: 1 / -1;
+  width: fit-content;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .site-shell {
+    border: 0;
+  }
+
+  .resume-header {
+    grid-template-columns: 1fr auto;
+    gap: 0 1rem;
+    padding: 0.75rem 1.25rem 0;
+  }
+
+  .resume-header nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    gap: 0;
+    justify-content: space-between;
+    margin-top: 0.55rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .resume-header nav a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+  }
+
+  .header-actions,
+  .header-actions .print-actions {
+    gap: 0.8rem;
+  }
+
+  .header-actions .text-button {
+    display: none;
+  }
+
+  .intro-section {
+    padding: 3.5rem 1.25rem 3.75rem;
+  }
+
+  .intro-section h1,
+  [lang="ko"] .intro-section h1 {
+    font-size: clamp(2.65rem, 12vw, 3.7rem);
+    line-height: 1.08;
+  }
+
+  .intro-summary {
+    margin-top: 1.35rem;
+    font-size: 1rem;
+  }
+
+  .contact-links {
+    margin-top: 1.5rem;
+  }
+
+  .resume-section {
+    padding: 3rem 1.25rem;
+  }
+
+  .section-heading {
+    margin-bottom: 1.5rem;
+  }
+
+  .experience-item,
+  .project-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .experience-item {
+    padding: 1.75rem 0;
+  }
+
+  .experience-date {
+    padding: 0;
+  }
+
+  .experience-summary {
+    margin: 0.75rem 0;
+    font-size: 0.92rem;
+  }
+
+  .impact-list li,
+  .project-copy p {
+    font-size: 0.84rem;
+  }
+
+  .project-row {
+    position: relative;
+    padding: 1.55rem 0 1.75rem;
+  }
+
+  .project-meta {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .row-link {
+    min-height: 44px;
+    padding-top: 0.75rem;
+  }
+
+  .additional-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .additional-facts {
+    gap: 1.5rem;
+    padding-top: 0;
+  }
+
+  .archive-link {
+    grid-column: auto;
+    min-height: 44px;
+    padding-top: 0.7rem;
+  }
+}
+
+@media print {
+  .resume-header {
+    display: none !important;
+  }
+
+  .site-shell {
+    width: 100%;
+    min-height: auto;
+    border: 0;
+  }
+
+  .intro-section {
+    padding: 0 0 7mm;
+    border-bottom: 1px solid #74776f;
+  }
+
+  .intro-section h1,
+  [lang="ko"] .intro-section h1 {
+    font-size: 28pt;
+    line-height: 1.05;
+  }
+
+  .intro-meta {
+    margin-bottom: 3mm;
+    font-size: 7pt;
+  }
+
+  .intro-summary {
+    max-width: 175mm;
+    margin-top: 3mm;
+    font-size: 9pt;
+    line-height: 1.45;
+  }
+
+  .contact-links {
+    gap: 2mm 7mm;
+    margin-top: 3mm;
+  }
+
+  .contact-links a {
+    font-size: 7pt;
+  }
+
+  .resume-section {
+    padding: 7mm 0;
+  }
+
+  .section-heading {
+    margin-bottom: 4mm;
+  }
+
+  .section-heading h2 {
+    font-size: 17pt;
+  }
+
+  .experience-item {
+    grid-template-columns: 30mm minmax(0, 1fr);
+    gap: 5mm;
+    padding: 4mm 0;
+    break-inside: avoid;
+  }
+
+  .experience-title-row h3 {
+    font-size: 12pt;
+  }
+
+  .experience-summary {
+    margin: 1.5mm 0;
+    font-size: 7.3pt;
+  }
+
+  .impact-list {
+    gap: 0.8mm;
+  }
+
+  .impact-list li {
+    font-size: 6.8pt;
+  }
+
+  .project-row {
+    grid-template-columns: 30mm minmax(0, 1fr) 20mm;
+    gap: 5mm;
+    padding: 3.5mm 0;
+    break-inside: avoid;
+  }
+
+  .project-copy h3 {
+    font-size: 11pt;
+  }
+
+  .project-copy p,
+  .additional-evidence p {
+    font-size: 6.8pt;
+  }
+
+  .row-link,
+  .archive-link {
+    display: none;
+  }
+
+  .additional-grid {
+    grid-template-columns: 1fr 0.8fr;
+    gap: 7mm;
+  }
+
+  .additional-evidence article,
+  .additional-facts {
+    padding-top: 3mm;
+  }
+}
+
 .subpage-shell {
   width: min(100%, 1240px);
   min-height: 100vh;

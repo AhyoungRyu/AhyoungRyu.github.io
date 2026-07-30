@@ -92,17 +92,17 @@ export const resumeContent: ResumeContent = {
       start: "2023-04",
       end: null,
       summary: {
-        ko: "AI Agent Messenger SDK와 Chat UIKit을 개발하며 고객 도입, 제품 아키텍처, 성능과 품질 개선을 담당합니다.",
-        en: "Builds the AI Agent Messenger SDK and Chat UIKit, owning customer integrations, product architecture, performance, and quality.",
+        ko: "Sendbird에서 AI Agent Messenger SDK와 Chat UIKit을 개발하고 있습니다. 고객사 도입 지원과 오래된 UIKit 구조 개선도 함께 맡았습니다.",
+        en: "At Sendbird, I build the AI Agent Messenger SDK and Chat UIKit. I also work directly with customers adopting the SDK and maintain the older UIKit codebase.",
       },
       highlights: {
         ko: [
-          "React 기반 AI Agent Messenger SDK의 설계와 고객사 PoC 환경 구축을 주도했습니다.",
+          "초기 고객사가 각자의 서비스에서 바로 시험할 수 있도록 React SDK와 PoC 환경을 만들었습니다.",
           "5년간 축적된 Chat UIKit 레거시 구조를 개편하고 테스트 커버리지를 22.51%에서 50%로 높였습니다.",
           "AI Chatbot 번들 크기를 약 25% 줄여 고객 사이트 Lighthouse 성능 점수를 약 15% 개선했습니다.",
         ],
         en: [
-          "Led the architecture of a React-based AI Agent Messenger SDK and customer proof-of-concept environments.",
+          "Built the React SDK and proof-of-concept environments that early customers used in their own services.",
           "Modernized five years of Chat UIKit legacy code and raised test coverage from 22.51% to 50%.",
           "Reduced the AI Chatbot bundle by about 25%, improving customer-site Lighthouse performance scores by about 15%.",
         ],
@@ -137,8 +137,8 @@ export const resumeContent: ResumeContent = {
       start: "2021-04",
       end: "2023-02",
       summary: {
-        ko: "토스뱅크 오픈 전부터 개인대출 상품의 신청·관리 퍼널 전반을 담당한 1인 프론트엔드 엔지니어였습니다.",
-        en: "Owned the front end for personal-loan application and management funnels from before TossBank's public launch.",
+        ko: "토스뱅크 오픈 전부터 개인대출 신청과 관리에 필요한 모든 웹뷰 화면을 혼자 맡았습니다.",
+        en: "I was the sole front-end engineer for TossBank's personal-loan application and management screens before the bank launched.",
       },
       highlights: {
         ko: [
@@ -220,7 +220,7 @@ export const resumeContent: ResumeContent = {
           "대용량 시각화 파이프라인에 Web Worker와 Canvas 차트를 도입해 페이지 멈춤 현상을 해결했습니다.",
         ],
         en: [
-          "Improved notebook interaction responsiveness by 100–300% and rebuilt the core AngularJS notebook in React.",
+          "Improved notebook interaction responsiveness by 100% to 300% and rebuilt the core AngularJS notebook in React.",
           "Introduced Web Workers and canvas charts to remove page freezes from large visualization pipelines.",
         ],
       },
@@ -362,8 +362,8 @@ export const resumeContent: ResumeContent = {
       },
       period: "2024-06 — 2024-12",
       summary: {
-        ko: "5년간 축적된 React UIKit의 구조를 개편하고 테스트와 온보딩 경험을 함께 개선한 프로젝트입니다.",
-        en: "A modernization of a five-year-old React UIKit spanning architecture, test strategy, and customer onboarding.",
+        ko: "5년간 쌓인 React 레거시 코드를 고치고 테스트 커버리지를 22.51%에서 50%로 높였습니다.",
+        en: "Reworked five years of React legacy code and raised test coverage from 22.51% to 50%.",
       },
       context: {
         ko: "고객사가 손쉽게 인앱 채팅을 구축하도록 제공하는 zero-dependency React UIKit입니다.",
@@ -422,8 +422,8 @@ export const resumeContent: ResumeContent = {
       },
       period: "2023-07 — 2024-02",
       summary: {
-        ko: "몇 줄의 스크립트로 웹사이트에 AI Chatbot을 통합하는 초기 제품의 클라이언트를 1인 개발했습니다.",
-        en: "Solely owned the client side of an early product that embeds an AI chatbot with a few lines of script.",
+        ko: "몇 줄의 스크립트로 웹사이트에 AI Chatbot을 붙일 수 있는 초기 제품의 클라이언트를 혼자 개발했습니다.",
+        en: "Built the client side alone for an early product that adds an AI chatbot to a website with a few lines of script.",
       },
       context: {
         ko: "초기 PMF를 찾는 단계에서 다양한 고객 웹사이트와 Shopify에 안정적으로 통합되어야 했습니다.",

@@ -48,3 +48,24 @@ test("reports broken page contracts", () => {
   assert.ok(issues.some((issue) => issue.includes("hreflang")));
   assert.ok(issues.some((issue) => issue.includes("og:image")));
 });
+
+test("requires the compact document structure on resume home pages", () => {
+  const html = `<!doctype html>
+    <html lang="ko">
+      <head>
+        <title>류아영 · Senior Software Engineer</title>
+        <link rel="canonical" href="/ko/" />
+        <link rel="alternate" hreflang="ko" href="/ko/" />
+        <link rel="alternate" hreflang="en" href="/en/" />
+        <link rel="alternate" hreflang="x-default" href="/en/" />
+        <meta property="og:image" content="/og.png" />
+      </head>
+      <body><main><h1>류아영</h1></main></body>
+    </html>`;
+
+  const issues = inspectRenderedHtml(html, "ko", "/ko");
+
+  assert.ok(
+    issues.some((issue) => issue.includes("compact resume home structure")),
+  );
+});

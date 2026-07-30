@@ -32,6 +32,11 @@ describe("localized resume selectors", () => {
   it("limits the home page to three selected projects", () => {
     expect(getResume("ko").selectedProjects).toHaveLength(3);
     expect(getResume("en").selectedProjects).toHaveLength(3);
+    expect(getResume("ko").selectedProjects.map((project) => project.id)).toEqual([
+      "ai-agent-messenger",
+      "chat-uikit-modernization",
+      "ai-chatbot-performance",
+    ]);
   });
 
   it("returns the supporting record used by the home page", () => {

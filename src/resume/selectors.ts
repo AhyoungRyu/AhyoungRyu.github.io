@@ -36,6 +36,11 @@ function getLocalizedExperiences(locale: Locale) {
 }
 
 export function getResume(locale: Locale) {
+  const homeProjectIds = [
+    "ai-agent-messenger",
+    "chat-uikit-modernization",
+    "ai-chatbot-performance",
+  ];
   const apacheProject = resumeContent.projects.find(
     (project) => project.id === "apache-zeppelin",
   );
@@ -43,8 +48,11 @@ export function getResume(locale: Locale) {
     (group) => group.id === "teaching-speaking",
   );
   const selectedProjects = resumeContent.projects
-    .filter((project) => project.selected)
-    .slice(0, 3)
+    .filter((project) => homeProjectIds.includes(project.id))
+    .sort(
+      (first, second) =>
+        homeProjectIds.indexOf(first.id) - homeProjectIds.indexOf(second.id),
+    )
     .map((project) => ({
       id: project.id,
       slug: project.slug,
