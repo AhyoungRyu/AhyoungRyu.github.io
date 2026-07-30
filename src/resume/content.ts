@@ -15,8 +15,8 @@ export const resumeContent: ResumeContent = {
       en: "Seoul, South Korea",
     },
     summary: {
-      ko: "B2B SDK와 복잡한 웹 제품을 설계하고, 오래된 React 시스템을 더 빠르고 신뢰할 수 있는 구조로 바꾸는 프론트엔드 엔지니어입니다. 제품 초기 단계의 1인 개발부터 대규모 레거시 개선, 고객사 도입 지원, 주니어 멘토링까지 제품의 전 생애주기를 맡아왔습니다.",
-      en: "I am a front-end engineer who builds B2B SDKs and complex web products, and turns long-lived React systems into faster, more reliable platforms. My experience spans zero-to-one product development, large-scale legacy modernization, customer integrations, and mentoring engineers.",
+      ko: "제 손으로 만든 제품이 실제 사용자의 문제를 해결할 때 가장 큰 보람을 느낍니다. 지금은 Sendbird에서 AI Agent Messenger SDK와 Chat UIKit을 개발하고 있습니다.",
+      en: "I care most about building products that solve a real problem for the people using them. I currently work on the AI Agent Messenger SDK and Chat UIKit at Sendbird.",
     },
     email: "ahyoungryu93@gmail.com",
     links: [

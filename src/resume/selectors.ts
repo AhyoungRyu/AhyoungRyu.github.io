@@ -10,6 +10,31 @@ function localizedPath(locale: Locale, path: string): string {
   return suffix ? `/${locale}/${suffix}/` : `/${locale}/`;
 }
 
+function getLocalizedExperiences(locale: Locale) {
+  return resumeContent.experiences.map((experience) => ({
+    id: experience.id,
+    company: experience.company,
+    companyUrl: experience.companyUrl,
+    role: text(experience.role, locale),
+    team: experience.team ? text(experience.team, locale) : undefined,
+    start: experience.start,
+    end: experience.end,
+    summary: text(experience.summary, locale),
+    highlights: experience.highlights[locale],
+    technologies: experience.technologies,
+    projects: experience.projectIds
+      .map((projectId) =>
+        resumeContent.projects.find((project) => project.id === projectId),
+      )
+      .filter((project) => project !== undefined)
+      .map((project) => ({
+        id: project.id,
+        title: text(project.title, locale),
+        href: localizedPath(locale, `/projects/${project.slug}/`),
+      })),
+  }));
+}
+
 export function getResume(locale: Locale) {
   const apacheProject = resumeContent.projects.find(
     (project) => project.id === "apache-zeppelin",
@@ -19,7 +44,7 @@ export function getResume(locale: Locale) {
   );
   const selectedProjects = resumeContent.projects
     .filter((project) => project.selected)
-    .slice(0, 6)
+    .slice(0, 3)
     .map((project) => ({
       id: project.id,
       slug: project.slug,
@@ -49,28 +74,12 @@ export function getResume(locale: Locale) {
       title: text(capability.title, locale),
       description: text(capability.description, locale),
     })),
-    experiences: resumeContent.experiences.map((experience) => ({
-      id: experience.id,
-      company: experience.company,
-      companyUrl: experience.companyUrl,
-      role: text(experience.role, locale),
-      team: experience.team ? text(experience.team, locale) : undefined,
-      start: experience.start,
-      end: experience.end,
-      summary: text(experience.summary, locale),
-      highlights: experience.highlights[locale],
-      technologies: experience.technologies,
-      projects: experience.projectIds
-        .map((projectId) =>
-          resumeContent.projects.find((project) => project.id === projectId),
-        )
-        .filter((project) => project !== undefined)
-        .map((project) => ({
-          id: project.id,
-          title: text(project.title, locale),
-          href: localizedPath(locale, `/projects/${project.slug}/`),
-        })),
-    })),
+    experiences: getLocalizedExperiences(locale)
+      .slice(0, 4)
+      .map((experience) => ({
+        ...experience,
+        highlights: experience.highlights.slice(0, 2),
+      })),
     selectedProjects,
     credibility: [
       apacheProject
@@ -99,6 +108,25 @@ export function getResume(locale: Locale) {
       name: text(language.name, locale),
       proficiency: text(language.proficiency, locale),
     })),
+    additionalRecord: {
+      openSource:
+        locale === "ko"
+          ? "Apache Zeppelin 커미터·PMC로 활동하며 281명의 기여자 중 9번째로 많은 104개 커밋을 남겼습니다."
+          : "As an Apache Zeppelin committer and PMC member, I made 104 commits, ranked ninth among 281 contributors.",
+      teaching:
+        locale === "ko"
+          ? "Fast Campus에서 Apache Zeppelin 강의를 4회, 총 11시간 진행했고 ApacheCon Europe과 North America에서 발표했습니다."
+          : "I taught an 11-hour Apache Zeppelin course at Fast Campus and spoke at ApacheCon Europe and North America.",
+      education: resumeContent.education.map((education) => ({
+        school: education.school,
+        degree: text(education.degree, locale),
+        period: education.period,
+      })),
+      languages: resumeContent.languages.map((language) => ({
+        name: text(language.name, locale),
+        proficiency: text(language.proficiency, locale),
+      })),
+    },
     archiveHref: localizedPath(locale, "/archive/"),
     pdfHref: `/resume-ahyoung-ryu-${locale}.pdf`,
     alternateLocale: locale === "ko" ? ("en" as const) : ("ko" as const),
@@ -170,7 +198,7 @@ export function getArchive(locale: Locale) {
         links: entry.links,
       })),
     })),
-    experiences: getResume(locale).experiences,
+    experiences: getLocalizedExperiences(locale),
     homeHref: localizedPath(locale, "/"),
   };
 }
