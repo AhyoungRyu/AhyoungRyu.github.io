@@ -51,4 +51,35 @@ describe("localized resume selectors", () => {
   it("keeps the complete experience timeline in the archive", () => {
     expect(getArchive("ko").experiences).toHaveLength(6);
   });
+
+  it("localizes and propagates home image metadata", () => {
+    const resume = getResume("ko");
+
+    expect(resume.profile.portrait.alt).toBe("류아영 프로필 사진");
+    expect(resume.experiences.map((item) => item.logo.src)).toEqual([
+      "/images/resume/logo-sendbird.png",
+      "/images/resume/logo-tossbank.png",
+      "/images/resume/logo-lunit.png",
+      "/images/resume/logo-zepl-current.png",
+    ]);
+    expect(resume.selectedProjects.every((project) => project.thumbnail)).toBe(
+      true,
+    );
+    expect(resume.additionalRecord.education[0].logo.src).toBe(
+      "/images/resume/logo-sookmyung.png",
+    );
+  });
+
+  it("propagates archive logos and project galleries", () => {
+    const archive = getArchive("en");
+    const project = getProject("ko", "zepl-performance");
+
+    expect(archive.experiences.every((experience) => experience.logo)).toBe(
+      true,
+    );
+    expect(project?.thumbnail.src).toBe(
+      "/images/resume/project-zepl-visualization.png",
+    );
+    expect(project?.gallery).toHaveLength(1);
+  });
 });

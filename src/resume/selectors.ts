@@ -1,5 +1,5 @@
 import { resumeContent } from "./content";
-import type { Locale, LocalizedText } from "./types";
+import type { Locale, LocalizedText, ResumeImage } from "./types";
 
 function text(value: LocalizedText, locale: Locale): string {
   return value[locale];
@@ -8,6 +8,16 @@ function text(value: LocalizedText, locale: Locale): string {
 function localizedPath(locale: Locale, path: string): string {
   const suffix = path === "/" ? "" : path.replace(/^\/|\/$/g, "");
   return suffix ? `/${locale}/${suffix}/` : `/${locale}/`;
+}
+
+function localizedImage(image: ResumeImage, locale: Locale) {
+  return {
+    src: image.src,
+    alt: text(image.alt, locale),
+    width: image.width,
+    height: image.height,
+    fit: image.fit,
+  };
 }
 
 function getLocalizedExperiences(locale: Locale) {
@@ -22,6 +32,7 @@ function getLocalizedExperiences(locale: Locale) {
     summary: text(experience.summary, locale),
     highlights: experience.highlights[locale],
     technologies: experience.technologies,
+    logo: localizedImage(experience.logo, locale),
     projects: experience.projectIds
       .map((projectId) =>
         resumeContent.projects.find((project) => project.id === projectId),
@@ -65,6 +76,9 @@ export function getResume(locale: Locale) {
         resumeContent.experiences.find(
           (experience) => experience.id === project.companyId,
         )?.company ?? project.companyId,
+      thumbnail: project.thumbnail
+        ? localizedImage(project.thumbnail, locale)
+        : undefined,
     }));
 
   return {
@@ -76,6 +90,7 @@ export function getResume(locale: Locale) {
       summary: text(resumeContent.profile.summary, locale),
       email: resumeContent.profile.email,
       links: resumeContent.profile.links,
+      portrait: localizedImage(resumeContent.profile.portrait, locale),
     },
     capabilities: resumeContent.capabilities.map((capability) => ({
       id: capability.id,
@@ -111,6 +126,7 @@ export function getResume(locale: Locale) {
       school: education.school,
       degree: text(education.degree, locale),
       period: education.period,
+      logo: localizedImage(education.logo, locale),
     })),
     languages: resumeContent.languages.map((language) => ({
       name: text(language.name, locale),
@@ -129,6 +145,7 @@ export function getResume(locale: Locale) {
         school: education.school,
         degree: text(education.degree, locale),
         period: education.period,
+        logo: localizedImage(education.logo, locale),
       })),
       languages: resumeContent.languages.map((language) => ({
         name: text(language.name, locale),
@@ -173,6 +190,10 @@ export function getProject(locale: Locale, slug: string) {
     outcomes: project.outcomes[locale],
     technologies: project.technologies,
     links: project.links,
+    thumbnail: project.thumbnail
+      ? localizedImage(project.thumbnail, locale)
+      : undefined,
+    gallery: project.gallery.map((image) => localizedImage(image, locale)),
     company: company?.company ?? project.companyId,
     companyUrl: company?.companyUrl,
     previous: previous
