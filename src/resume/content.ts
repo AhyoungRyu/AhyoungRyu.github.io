@@ -1,4 +1,138 @@
-import type { ResumeContent } from "./types";
+import type { ResumeContent, ResumeImage } from "./types";
+
+function resumeImage(
+  src: string,
+  width: number,
+  height: number,
+  fit: ResumeImage["fit"],
+  ko: string,
+  en: string,
+): ResumeImage {
+  return { src, width, height, fit, alt: { ko, en } };
+}
+
+const images = {
+  portrait: resumeImage(
+    "/images/resume/profile-ahyoung-ryu.png",
+    274,
+    274,
+    "cover",
+    "류아영 프로필 사진",
+    "Portrait of Ahyoung Ryu",
+  ),
+  sendbirdLogo: resumeImage(
+    "/images/resume/logo-sendbird.png",
+    168,
+    100,
+    "contain",
+    "Sendbird 로고",
+    "Sendbird logo",
+  ),
+  tossbankLogo: resumeImage(
+    "/images/resume/logo-tossbank.png",
+    168,
+    100,
+    "contain",
+    "토스뱅크 로고",
+    "TossBank logo",
+  ),
+  lunitLogo: resumeImage(
+    "/images/resume/logo-lunit.png",
+    168,
+    100,
+    "contain",
+    "루닛 로고",
+    "Lunit logo",
+  ),
+  zeplCurrentLogo: resumeImage(
+    "/images/resume/logo-zepl-current.png",
+    168,
+    100,
+    "contain",
+    "Zepl 로고",
+    "Zepl logo",
+  ),
+  zeplClassicLogo: resumeImage(
+    "/images/resume/logo-zepl-classic.png",
+    168,
+    100,
+    "contain",
+    "Zepl 클래식 로고",
+    "Classic Zepl logo",
+  ),
+  sookmyungLogo: resumeImage(
+    "/images/resume/logo-sookmyung.png",
+    168,
+    134,
+    "contain",
+    "숙명여자대학교 로고",
+    "Sookmyung Women's University logo",
+  ),
+  aiAgent: resumeImage(
+    "/images/resume/project-ai-agent.png",
+    564,
+    318,
+    "cover",
+    "Delight AI 고객 서비스 화면",
+    "Delight AI customer-service product visual",
+  ),
+  chatUIKit: resumeImage(
+    "/images/resume/project-chat-uikit.png",
+    1272,
+    885,
+    "contain",
+    "Sendbird Chat UIKit v2에서 v3로의 구조 변화",
+    "Sendbird Chat UIKit architecture change from v2 to v3",
+  ),
+  aiChatbot: resumeImage(
+    "/images/resume/project-ai-chatbot.png",
+    814,
+    542,
+    "cover",
+    "Sendbird AI Chatbot 제품 이미지",
+    "Sendbird AI Chatbot product visual",
+  ),
+  tossbank: resumeImage(
+    "/images/resume/project-tossbank.png",
+    564,
+    318,
+    "cover",
+    "토스뱅크 브랜드 이미지",
+    "TossBank brand visual",
+  ),
+  lunitAnnotation: resumeImage(
+    "/images/resume/project-lunit-annotation.png",
+    564,
+    368,
+    "cover",
+    "루닛 병리 이미지 Annotation Tool 화면",
+    "Lunit pathology-image annotation tool interface",
+  ),
+  zeppelinUi: resumeImage(
+    "/images/resume/project-zeppelin-ui.png",
+    530,
+    420,
+    "contain",
+    "Apache Zeppelin 사용자 인터페이스",
+    "Apache Zeppelin user interface",
+  ),
+  zeplNotebook: resumeImage(
+    "/images/resume/project-zepl-notebook.png",
+    530,
+    700,
+    "contain",
+    "Zepl 노트북 제품 화면",
+    "Zepl notebook product interface",
+  ),
+  zeplVisualization: resumeImage(
+    "/images/resume/project-zepl-visualization.png",
+    564,
+    318,
+    "cover",
+    "Zepl 데이터 시각화 화면",
+    "Zepl data-visualization interface",
+  ),
+} as const;
 
 export const resumeContent: ResumeContent = {
   profile: {
@@ -19,6 +153,7 @@ export const resumeContent: ResumeContent = {
       en: "I care most about building products that solve a real problem for the people using them. I currently work on the AI Agent Messenger SDK and Chat UIKit at Sendbird.",
     },
     email: "ahyoungryu93@gmail.com",
+    portrait: images.portrait,
     links: [
       {
         label: "LinkedIn",
@@ -121,6 +256,7 @@ export const resumeContent: ResumeContent = {
         "chat-uikit-modernization",
         "ai-chatbot-performance",
       ],
+      logo: images.sendbirdLogo,
     },
     {
       id: "tossbank",
@@ -163,6 +299,7 @@ export const resumeContent: ResumeContent = {
         "GitHub Actions",
       ],
       projectIds: ["tossbank-personal-loan", "compliance-single-source"],
+      logo: images.tossbankLogo,
     },
     {
       id: "lunit",
@@ -198,6 +335,7 @@ export const resumeContent: ResumeContent = {
         "Cypress",
       ],
       projectIds: ["lunit-annotation-tools"],
+      logo: images.lunitLogo,
     },
     {
       id: "zepl-frontend",
@@ -235,6 +373,7 @@ export const resumeContent: ResumeContent = {
         "Webpack",
       ],
       projectIds: ["zepl-performance"],
+      logo: images.zeplCurrentLogo,
     },
     {
       id: "zepl-engineer",
@@ -270,6 +409,7 @@ export const resumeContent: ResumeContent = {
         "Webpack",
       ],
       projectIds: ["apache-zeppelin"],
+      logo: images.zeplClassicLogo,
     },
     {
       id: "zepl-intern",
@@ -296,6 +436,7 @@ export const resumeContent: ResumeContent = {
       },
       technologies: ["AngularJS", "Bootstrap", "Jekyll", "JavaScript"],
       projectIds: ["apache-zeppelin"],
+      logo: images.zeplClassicLogo,
     },
   ],
   projects: [
@@ -351,6 +492,8 @@ export const resumeContent: ResumeContent = {
       technologies: ["TypeScript", "React", "Vite", "pnpm", "CircleCI"],
       links: [{ label: "Delight AI", href: "https://delight.ai/" }],
       selected: true,
+      thumbnail: images.aiAgent,
+      gallery: [],
     },
     {
       id: "chat-uikit-modernization",
@@ -411,6 +554,8 @@ export const resumeContent: ResumeContent = {
         },
       ],
       selected: true,
+      thumbnail: images.chatUIKit,
+      gallery: [],
     },
     {
       id: "ai-chatbot-performance",
@@ -460,6 +605,8 @@ export const resumeContent: ResumeContent = {
       technologies: ["TypeScript", "React", "Lighthouse", "Shopify"],
       links: [],
       selected: false,
+      thumbnail: images.aiChatbot,
+      gallery: [],
     },
     {
       id: "tossbank-personal-loan",
@@ -526,6 +673,8 @@ export const resumeContent: ResumeContent = {
         },
       ],
       selected: true,
+      thumbnail: images.tossbank,
+      gallery: [],
     },
     {
       id: "compliance-single-source",
@@ -573,6 +722,7 @@ export const resumeContent: ResumeContent = {
       technologies: ["TypeScript", "React", "Node.js", "AWS S3", "Slack API"],
       links: [],
       selected: false,
+      gallery: [],
     },
     {
       id: "lunit-annotation-tools",
@@ -630,6 +780,8 @@ export const resumeContent: ResumeContent = {
       ],
       links: [{ label: "Lunit SCOPE", href: "https://www.lunit.io/en" }],
       selected: true,
+      thumbnail: images.lunitAnnotation,
+      gallery: [],
     },
     {
       id: "apache-zeppelin",
@@ -697,6 +849,8 @@ export const resumeContent: ResumeContent = {
         },
       ],
       selected: true,
+      thumbnail: images.zeppelinUi,
+      gallery: [],
     },
     {
       id: "zepl-performance",
@@ -764,6 +918,8 @@ export const resumeContent: ResumeContent = {
         },
       ],
       selected: true,
+      thumbnail: images.zeplVisualization,
+      gallery: [images.zeplNotebook],
     },
   ],
   archiveGroups: [
@@ -1024,6 +1180,7 @@ export const resumeContent: ResumeContent = {
         en: "B.S. in Computer Science",
       },
       period: "2012-03 — 2016-08",
+      logo: images.sookmyungLogo,
     },
   ],
   languages: [

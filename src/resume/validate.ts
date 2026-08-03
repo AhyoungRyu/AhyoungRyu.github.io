@@ -1,4 +1,10 @@
-import { locales, type LocalizedText, type ResumeContent, type ResumeLink } from "./types";
+import {
+  locales,
+  type LocalizedText,
+  type ResumeContent,
+  type ResumeImage,
+  type ResumeLink,
+} from "./types";
 
 function hasCompleteLocalizedText(value: LocalizedText): boolean {
   return locales.every((locale) => value[locale]?.trim().length > 0);
@@ -43,6 +49,25 @@ function validateLinks(
   }
 }
 
+function validateImage(
+  image: ResumeImage,
+  path: string,
+  errors: string[],
+): void {
+  if (
+    !image.src.startsWith("/images/resume/") ||
+    image.src.includes("..") ||
+    !hasCompleteLocalizedText(image.alt) ||
+    !Number.isFinite(image.width) ||
+    image.width <= 0 ||
+    !Number.isFinite(image.height) ||
+    image.height <= 0 ||
+    !["cover", "contain"].includes(image.fit)
+  ) {
+    errors.push(`${path} must be a complete local resume image`);
+  }
+}
+
 function validateDates(content: ResumeContent, errors: string[]): void {
   const currentCount = content.experiences.filter(
     (experience) => experience.end === null,
@@ -82,6 +107,7 @@ export function validateResumeContent(content: ResumeContent): string[] {
   }
 
   validateLinks(content.profile.links, "profile.links", errors);
+  validateImage(content.profile.portrait, "profile.portrait", errors);
   validateDates(content, errors);
   validateUniqueValues(
     content.experiences.map((experience) => experience.id),
@@ -129,6 +155,7 @@ export function validateResumeContent(content: ResumeContent): string[] {
       `experiences.${experience.id}.companyUrl`,
       errors,
     );
+    validateImage(experience.logo, `experiences.${experience.id}.logo`, errors);
   }
 
   for (const project of content.projects) {
@@ -147,6 +174,16 @@ export function validateResumeContent(content: ResumeContent): string[] {
     }
 
     validateLinks(project.links, `projects.${project.id}.links`, errors);
+    if (project.thumbnail) {
+      validateImage(
+        project.thumbnail,
+        `projects.${project.id}.thumbnail`,
+        errors,
+      );
+    }
+    project.gallery.forEach((image, index) => {
+      validateImage(image, `projects.${project.id}.gallery.${index}`, errors);
+    });
   }
 
   for (const group of content.archiveGroups) {
@@ -175,6 +212,14 @@ export function validateResumeContent(content: ResumeContent): string[] {
         errors,
       );
     }
+  }
+
+  for (const education of content.education) {
+    validateImage(
+      education.logo,
+      `education.${education.school}.logo`,
+      errors,
+    );
   }
 
   return errors;

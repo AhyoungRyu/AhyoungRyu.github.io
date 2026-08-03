@@ -8,6 +8,14 @@ export type ResumeLink = {
   href: string;
 };
 
+export type ResumeImage = {
+  src: string;
+  alt: LocalizedText;
+  width: number;
+  height: number;
+  fit: "cover" | "contain";
+};
+
 export type Profile = {
   name: LocalizedText;
   role: LocalizedText;
@@ -15,6 +23,7 @@ export type Profile = {
   summary: LocalizedText;
   email: string;
   links: ResumeLink[];
+  portrait: ResumeImage;
 };
 
 export type Capability = {
@@ -35,6 +44,7 @@ export type Experience = {
   highlights: Record<Locale, string[]>;
   technologies: string[];
   projectIds: string[];
+  logo: ResumeImage;
 };
 
 export type Project = {
@@ -51,6 +61,8 @@ export type Project = {
   technologies: string[];
   links: ResumeLink[];
   selected: boolean;
+  thumbnail?: ResumeImage;
+  gallery: ResumeImage[];
 };
 
 export type ArchiveEntry = {
@@ -73,6 +85,7 @@ export type Education = {
   school: string;
   degree: LocalizedText;
   period: string;
+  logo: ResumeImage;
 };
 
 export type Language = {
