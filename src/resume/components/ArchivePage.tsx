@@ -1,5 +1,6 @@
 import { getArchive } from "../selectors";
 import type { Locale } from "../types";
+import { ResumeImage } from "./ResumeImage";
 
 type ArchivePageProps = {
   locale: Locale;
@@ -79,6 +80,18 @@ export function ArchivePage({ locale }: ArchivePageProps) {
                   ))}
                 </ul>
               </div>
+              <a
+                aria-label={`${experience.company} website`}
+                className="archive-company-logo-link"
+                href={experience.companyUrl}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <ResumeImage
+                  className="archive-company-logo"
+                  image={experience.logo}
+                />
+              </a>
             </article>
           ))}
         </div>

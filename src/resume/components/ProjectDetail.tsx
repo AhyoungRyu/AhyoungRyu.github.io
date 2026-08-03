@@ -1,5 +1,6 @@
 import { getProject } from "../selectors";
 import type { Locale } from "../types";
+import { ResumeImage } from "./ResumeImage";
 
 type ProjectDetailProps = {
   locale: Locale;
@@ -72,6 +73,15 @@ export function ProjectDetail({ locale, slug }: ProjectDetailProps) {
           <p>{project.summary}</p>
         </header>
 
+        {project.thumbnail ? (
+          <figure className="project-primary-image-frame">
+            <ResumeImage
+              className="project-primary-image"
+              image={project.thumbnail}
+            />
+          </figure>
+        ) : null}
+
         <div className="project-story">
           <aside className="project-facts">
             <div>
@@ -136,6 +146,16 @@ export function ProjectDetail({ locale, slug }: ProjectDetailProps) {
             </section>
           </div>
         </div>
+
+        {project.gallery.length ? (
+          <div className="project-gallery">
+            {project.gallery.map((image) => (
+              <figure key={image.src}>
+                <ResumeImage image={image} />
+              </figure>
+            ))}
+          </div>
+        ) : null}
       </article>
 
       <nav className="project-pagination" aria-label="Project navigation">

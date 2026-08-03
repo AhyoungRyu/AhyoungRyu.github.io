@@ -1543,6 +1543,16 @@ a:focus-visible {
   }
 
   .intro-layout {
+    grid-template-columns: minmax(0, 1fr) 22mm;
+    gap: 5mm;
+  }
+
+  .profile-portrait {
+    width: 22mm;
+    height: 22mm;
+  }
+
+  .intro-layout {
     grid-template-columns: minmax(0, 1fr) 88px;
     gap: 1rem;
   }
@@ -1710,10 +1720,16 @@ a:focus-visible {
   }
 
   .experience-item {
-    grid-template-columns: 30mm minmax(0, 1fr);
+    grid-template-columns: 27mm minmax(0, 1fr) 20mm;
     gap: 5mm;
     padding: 4mm 0;
     break-inside: avoid;
+  }
+
+  .experience-logo-link,
+  .experience-logo {
+    width: 20mm;
+    height: 12mm;
   }
 
   .experience-title-row h3 {
@@ -1734,10 +1750,15 @@ a:focus-visible {
   }
 
   .project-row {
-    grid-template-columns: 30mm minmax(0, 1fr) 20mm;
-    gap: 5mm;
+    grid-template-columns: 26mm minmax(0, 1fr) 42mm;
+    gap: 4mm;
     padding: 3.5mm 0;
     break-inside: avoid;
+  }
+
+  .project-thumbnail-link {
+    width: 42mm;
+    height: 23.6mm;
   }
 
   .project-copy h3 {
@@ -1762,6 +1783,16 @@ a:focus-visible {
   .additional-evidence article,
   .additional-facts {
     padding-top: 3mm;
+  }
+
+  .education-fact {
+    grid-template-columns: 13mm minmax(0, 1fr);
+    gap: 2mm;
+  }
+
+  .education-logo {
+    width: 13mm;
+    height: 10mm;
   }
 }
 
@@ -1847,6 +1878,21 @@ a:focus-visible {
   margin: 2rem 0 0;
   color: var(--muted);
   font-size: clamp(1rem, 2vw, 1.28rem);
+}
+
+.project-primary-image-frame {
+  width: min(100%, 720px);
+  margin: clamp(2.5rem, 6vw, 5rem) 0 0 auto;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #f7f7f4;
+}
+
+.project-primary-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 540px;
 }
 
 .project-story {
@@ -1942,6 +1988,27 @@ a:focus-visible {
   color: var(--accent-soft);
 }
 
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0 0 clamp(3.5rem, 8vw, 7rem);
+}
+
+.project-gallery figure {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #f7f7f4;
+}
+
+.project-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 700px;
+}
+
 .project-pagination {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1994,10 +2061,17 @@ a:focus-visible {
 
 .archive-timeline > article {
   display: grid;
-  grid-template-columns: minmax(150px, 0.3fr) minmax(0, 1fr);
+  grid-template-columns: minmax(150px, 0.3fr) minmax(0, 1fr) 84px;
   gap: 2rem;
   padding: 2.3rem 0;
   border-top: 1px solid var(--line);
+}
+
+.archive-company-logo-link,
+.archive-company-logo {
+  display: block;
+  width: 84px;
+  height: 50px;
 }
 
 .archive-timeline > article > div:first-child {
@@ -2101,9 +2175,26 @@ a:focus-visible {
   }
 
   .project-story,
-  .archive-timeline > article,
   .archive-groups > section > header,
   .archive-entry-list article {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-timeline > article {
+    grid-template-columns: minmax(0, 1fr) 72px;
+  }
+
+  .archive-timeline > article > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .archive-company-logo-link,
+  .archive-company-logo {
+    width: 72px;
+    height: 44px;
+  }
+
+  .project-gallery {
     grid-template-columns: 1fr;
   }
 
