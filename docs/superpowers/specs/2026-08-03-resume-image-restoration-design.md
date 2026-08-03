@@ -35,7 +35,7 @@ The implementation will preserve these CakeResume assets locally:
 - one Sendbird logo;
 - one TossBank logo;
 - one Lunit logo;
-- two Zepl logo variants used by the respective roles in the original timeline;
+- one Zepl logo reused across the three roles, matching the source resume;
 - one Sookmyung Women's University logo;
 - one Delight AI / Sendbird product visual;
 - one TossBank visual;
@@ -65,7 +65,10 @@ All original CakeResume project visuals remain available on the relevant project
 - Add a dedicated logo column on the right of each experience row.
 - Use an 84 by 50 pixel containment box, matching the original CakeResume logo scale.
 - Use `object-fit: contain` so wordmarks and square Zepl marks remain undistorted.
-- Reuse the correct Zepl logo variant for each role, as shown in the source resume.
+- Reuse the same verified Zepl mark for each role. The two CakeResume CDN
+  entries originally recorded for these roles currently return byte-identical
+  168×100 PNG files, so keeping two local filenames would imply a historical
+  distinction that the source assets do not contain.
 - Logos link to the same company URLs as the company names.
 
 The logo column must not increase the row height beyond what the text already requires.

@@ -44,21 +44,13 @@ const images = {
     "루닛 로고",
     "Lunit logo",
   ),
-  zeplCurrentLogo: resumeImage(
+  zeplLogo: resumeImage(
     "/images/resume/logo-zepl-current.png",
     168,
     100,
     "contain",
     "Zepl 로고",
     "Zepl logo",
-  ),
-  zeplClassicLogo: resumeImage(
-    "/images/resume/logo-zepl-classic.png",
-    168,
-    100,
-    "contain",
-    "Zepl 클래식 로고",
-    "Classic Zepl logo",
   ),
   sookmyungLogo: resumeImage(
     "/images/resume/logo-sookmyung.png",
@@ -373,7 +365,7 @@ export const resumeContent: ResumeContent = {
         "Webpack",
       ],
       projectIds: ["zepl-performance"],
-      logo: images.zeplCurrentLogo,
+      logo: images.zeplLogo,
     },
     {
       id: "zepl-engineer",
@@ -409,7 +401,7 @@ export const resumeContent: ResumeContent = {
         "Webpack",
       ],
       projectIds: ["apache-zeppelin"],
-      logo: images.zeplClassicLogo,
+      logo: images.zeplLogo,
     },
     {
       id: "zepl-intern",
@@ -436,7 +428,7 @@ export const resumeContent: ResumeContent = {
       },
       technologies: ["AngularJS", "Bootstrap", "Jekyll", "JavaScript"],
       projectIds: ["apache-zeppelin"],
-      logo: images.zeplClassicLogo,
+      logo: images.zeplLogo,
     },
   ],
   projects: [

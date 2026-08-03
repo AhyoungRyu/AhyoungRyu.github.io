@@ -34,6 +34,12 @@ jobs:
       - name: Verify source
         run: npm run verify
 
+      - name: Generate fresh resume PDFs
+        run: npm run pdf
+
+      - name: Verify generated resume PDFs
+        run: npm run test:pdf
+
       - name: Export static site
         run: npm run export:static
         env:

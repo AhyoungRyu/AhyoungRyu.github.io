@@ -2,8 +2,10 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  collectLocalResumeImagePaths,
   inspectRenderedHtml,
   expectedResumeRoutes,
+  findMissingLocalAssets,
 } from "../scripts/check-built-site.mjs";
 
 test("defines every localized resume, archive, and project route", () => {
@@ -67,5 +69,24 @@ test("requires the compact document structure on resume home pages", () => {
 
   assert.ok(
     issues.some((issue) => issue.includes("compact resume home structure")),
+  );
+});
+
+test("collects local resume assets and detects files missing from a build", async () => {
+  const html = `<main>
+    <img src="/images/resume/logo-sendbird.png" alt="Sendbird" />
+    <img src="/images/resume/logo-sendbird.png" alt="Sendbird duplicate" />
+    <img src="https://example.com/external.png" alt="External" />
+    <img src="/images/resume/missing.png" alt="Missing" />
+  </main>`;
+  const assets = collectLocalResumeImagePaths(html);
+
+  assert.deepEqual(assets, [
+    "/images/resume/logo-sendbird.png",
+    "/images/resume/missing.png",
+  ]);
+  assert.deepEqual(
+    await findMissingLocalAssets(new URL("../public/", import.meta.url), assets),
+    ["/images/resume/missing.png"],
   );
 });

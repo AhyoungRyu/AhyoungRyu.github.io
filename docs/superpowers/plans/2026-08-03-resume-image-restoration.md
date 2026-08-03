@@ -53,7 +53,6 @@
 - Create: `public/images/resume/logo-tossbank.png`
 - Create: `public/images/resume/logo-lunit.png`
 - Create: `public/images/resume/logo-zepl-current.png`
-- Create: `public/images/resume/logo-zepl-classic.png`
 - Create: `public/images/resume/logo-sookmyung.png`
 - Create: `public/images/resume/project-ai-agent.png`
 - Create: `public/images/resume/project-chat-uikit.png`
@@ -127,7 +126,6 @@ logo-sendbird.png        <- https://images.cakeresume.com/OkRgP/ahyoung-ryu-kr/6
 logo-tossbank.png        <- https://images.cakeresume.com/OkRgP/ahyoung-ryu-kr/19ff1020-44d0-474c-ac44-cd2064fa2840.png
 logo-lunit.png           <- https://images.cakeresume.com/OkRgP/ahyoung-ryu-kr/db32aa25-189b-4221-a435-a9713223fd16.png
 logo-zepl-current.png    <- https://images.cakeresume.com/ahyoung-ryu/7a53baf5-1923-4f41-864a-83aef28c7fb0.png
-logo-zepl-classic.png    <- https://images.cakeresume.com/ahyoung-ryu/482e438b-677c-49a3-bc6a-ad760f8347a6.png
 logo-sookmyung.png       <- https://images.cakeresume.com/ahyoung-ryu/25d25ed6-100e-4f7e-90c4-c4a4cd48cfe9.png
 project-ai-agent.png     <- https://images.cakeresume.com/OkRgP/ahyoung-ryu-kr/954f3760-a97a-4ce6-883f-4df29bfa2706.png
 project-tossbank.png     <- https://images.cakeresume.com/OkRgP/ahyoung-ryu-kr/c094acdc-f025-425a-9641-7145f894a16b.png
@@ -136,6 +134,11 @@ project-zeppelin-ui.png  <- https://images.cakeresume.com/ahyoung-ryu/850af182-c
 project-zepl-notebook.png <- https://images.cakeresume.com/ahyoung-ryu/323be156-11ca-4260-819c-94d8c03b5067.png
 project-zepl-visualization.png <- https://images.cakeresume.com/ahyoung-ryu/df62bd35-18d8-49dd-9509-faf60c7987bd.png
 ```
+
+The second Zepl CDN entry originally noted for the earlier roles
+(`482e438b-677c-49a3-bc6a-ad760f8347a6.png`) currently returns the exact same
+168×100 PNG bytes as the retained Zepl source. Reuse one local Zepl asset for
+all three roles instead of presenting duplicate files as different variants.
 
 Download the two missing selected-project visuals from official Sendbird pages:
 

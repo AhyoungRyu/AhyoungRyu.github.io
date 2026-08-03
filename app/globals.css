@@ -1543,16 +1543,6 @@ a:focus-visible {
   }
 
   .intro-layout {
-    grid-template-columns: minmax(0, 1fr) 22mm;
-    gap: 5mm;
-  }
-
-  .profile-portrait {
-    width: 22mm;
-    height: 22mm;
-  }
-
-  .intro-layout {
     grid-template-columns: minmax(0, 1fr) 88px;
     gap: 1rem;
   }
@@ -1996,6 +1986,9 @@ a:focus-visible {
 }
 
 .project-gallery figure {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   margin: 0;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -2004,7 +1997,8 @@ a:focus-visible {
 
 .project-gallery img {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
   max-height: 700px;
 }

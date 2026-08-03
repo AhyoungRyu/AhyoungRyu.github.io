@@ -1,5 +1,5 @@
 import { access, readFile } from "node:fs/promises";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import path from "node:path";
 
 const projectSlugs = [
@@ -21,6 +21,31 @@ export const expectedResumeRoutes = ["ko", "en"].flatMap((locale) => [
 
 function countMatches(value, pattern) {
   return [...value.matchAll(pattern)].length;
+}
+
+export function collectLocalResumeImagePaths(html) {
+  return [
+    ...new Set(
+      [...html.matchAll(/<img\b[^>]*\bsrc=["'](\/images\/resume\/[^"']+)["']/gi)].map(
+        (match) => match[1],
+      ),
+    ),
+  ];
+}
+
+export async function findMissingLocalAssets(assetRoot, assetPaths) {
+  const root = assetRoot instanceof URL ? fileURLToPath(assetRoot) : assetRoot;
+  const missing = [];
+
+  for (const assetPath of assetPaths) {
+    try {
+      await access(path.join(root, assetPath.replace(/^\/+/, "")));
+    } catch {
+      missing.push(assetPath);
+    }
+  }
+
+  return missing;
 }
 
 export function inspectRenderedHtml(html, expectedLocale, route = "") {
@@ -110,6 +135,7 @@ async function render(worker, route) {
 export async function checkBuiltSite(rootDirectory = process.cwd()) {
   const worker = await loadWorker(rootDirectory);
   const failures = [];
+  const resumeImagePaths = new Set();
 
   for (const route of expectedResumeRoutes) {
     const response = await render(worker, route);
@@ -124,8 +150,24 @@ export async function checkBuiltSite(rootDirectory = process.cwd()) {
     }
 
     const locale = route.split("/")[1];
-    const issues = inspectRenderedHtml(await response.text(), locale, route);
+    const html = await response.text();
+    const issues = inspectRenderedHtml(html, locale, route);
+    collectLocalResumeImagePaths(html).forEach((assetPath) => {
+      resumeImagePaths.add(assetPath);
+    });
     failures.push(...issues.map((issue) => `${route}: ${issue}`));
+  }
+
+  if (resumeImagePaths.size === 0) {
+    failures.push("rendered routes do not reference any local resume images");
+  } else {
+    const missingAssets = await findMissingLocalAssets(
+      path.join(rootDirectory, "dist/client"),
+      [...resumeImagePaths],
+    );
+    failures.push(
+      ...missingAssets.map((assetPath) => `${assetPath}: built image is missing`),
+    );
   }
 
   const rootResponse = await render(worker, "/");
@@ -185,6 +227,8 @@ export async function checkBuiltSite(rootDirectory = process.cwd()) {
   if (failures.length > 0) {
     throw new Error(`Built-site contract failed:\n- ${failures.join("\n- ")}`);
   }
+
+  return resumeImagePaths.size;
 }
 
 const invokedPath = process.argv[1]
@@ -192,8 +236,8 @@ const invokedPath = process.argv[1]
   : "";
 
 if (invokedPath === import.meta.url) {
-  await checkBuiltSite();
+  const resumeImageCount = await checkBuiltSite();
   process.stdout.write(
-    `Verified ${expectedResumeRoutes.length} localized routes, discovery files, social card, and two PDFs.\n`,
+    `Verified ${expectedResumeRoutes.length} localized routes, ${resumeImageCount} local resume images, discovery files, social card, and two PDFs.\n`,
   );
 }
