@@ -70,7 +70,11 @@ export function AdditionalRecord({
           <h3>{copy.education}</h3>
           {record.education.map((education) => (
             <div className="education-fact" key={education.school}>
-              <ResumeImage className="education-logo" image={education.logo} />
+              <ResumeImage
+                className="education-logo"
+                image={education.logo}
+                loading="eager"
+              />
               <div className="fact-item">
                 <strong>{education.school}</strong>
                 <span>{education.degree}</span>

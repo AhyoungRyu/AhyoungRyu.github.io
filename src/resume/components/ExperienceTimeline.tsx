@@ -85,6 +85,7 @@ export function ExperienceTimeline({
             <ResumeImage
               className="experience-logo"
               image={experience.logo}
+              loading="eager"
             />
           </a>
         </article>

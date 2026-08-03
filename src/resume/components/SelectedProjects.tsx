@@ -55,6 +55,7 @@ export function SelectedProjects({ locale, projects }: SelectedProjectsProps) {
               <ResumeImage
                 className="project-thumbnail"
                 image={project.thumbnail}
+                loading="eager"
               />
             </a>
           ) : null}

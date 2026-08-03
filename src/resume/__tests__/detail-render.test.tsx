@@ -39,6 +39,22 @@ describe("detail routes", () => {
     expect(container.querySelectorAll(".project-gallery img")).toHaveLength(1);
   });
 
+  it("eagerly loads every project image used on a detail page", () => {
+    const { container } = render(
+      <ProjectDetail locale="ko" slug="zepl-performance" />,
+    );
+    const projectImages = Array.from(
+      container.querySelectorAll<HTMLImageElement>(
+        ".project-primary-image, .project-gallery img",
+      ),
+    );
+
+    expect(projectImages).toHaveLength(2);
+    expect(
+      projectImages.every((image) => image.getAttribute("loading") === "eager"),
+    ).toBe(true);
+  });
+
   it("uses local employer logos in the archive", () => {
     const { container } = render(<ArchivePage locale="en" />);
     const logos = Array.from(

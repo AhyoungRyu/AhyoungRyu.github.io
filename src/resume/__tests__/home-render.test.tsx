@@ -80,4 +80,18 @@ describe("ResumeHome", () => {
       true,
     );
   });
+
+  it("eagerly loads every image required by the printable home page", () => {
+    const { container } = render(<ResumeHome locale="ko" />);
+    const printableImages = Array.from(
+      container.querySelectorAll<HTMLImageElement>(
+        ".profile-portrait, .experience-logo, .project-thumbnail, .education-logo",
+      ),
+    );
+
+    expect(printableImages).toHaveLength(9);
+    expect(
+      printableImages.every((image) => image.getAttribute("loading") === "eager"),
+    ).toBe(true);
+  });
 });

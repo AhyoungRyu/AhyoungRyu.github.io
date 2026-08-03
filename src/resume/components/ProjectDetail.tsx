@@ -78,6 +78,7 @@ export function ProjectDetail({ locale, slug }: ProjectDetailProps) {
             <ResumeImage
               className="project-primary-image"
               image={project.thumbnail}
+              loading="eager"
             />
           </figure>
         ) : null}
@@ -151,7 +152,7 @@ export function ProjectDetail({ locale, slug }: ProjectDetailProps) {
           <div className="project-gallery">
             {project.gallery.map((image) => (
               <figure key={image.src}>
-                <ResumeImage image={image} />
+                <ResumeImage image={image} loading="eager" />
               </figure>
             ))}
           </div>
