@@ -48,4 +48,36 @@ describe("ResumeHome", () => {
     expect(screen.getByText(/총 11시간/)).toBeTruthy();
     expect(screen.queryByText("Explore →")).toBeNull();
   });
+
+  it("renders the local portrait and institutional marks", () => {
+    const { container } = render(<ResumeHome locale="ko" />);
+
+    expect(
+      container.querySelector(
+        '.profile-portrait[src="/images/resume/profile-ahyoung-ryu.png"]',
+      ),
+    ).toBeTruthy();
+    expect(container.querySelectorAll(".experience-logo")).toHaveLength(4);
+    expect(
+      container.querySelector(
+        '.education-logo[src="/images/resume/logo-sookmyung.png"]',
+      ),
+    ).toBeTruthy();
+  });
+
+  it("renders three distinct local project thumbnails", () => {
+    const { container } = render(<ResumeHome locale="en" />);
+    const thumbnails = Array.from(
+      container.querySelectorAll<HTMLImageElement>(".project-thumbnail"),
+    );
+
+    expect(thumbnails).toHaveLength(3);
+    expect(
+      new Set(thumbnails.map((image) => image.getAttribute("src"))).size,
+    ).toBe(3);
+    expect(thumbnails.every((image) => image.getAttribute("width"))).toBe(true);
+    expect(thumbnails.every((image) => image.getAttribute("height"))).toBe(
+      true,
+    );
+  });
 });

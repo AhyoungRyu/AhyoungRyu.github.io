@@ -1,4 +1,13 @@
 import type { Locale } from "../types";
+import { ResumeImage } from "./ResumeImage";
+
+type ImageData = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  fit: "cover" | "contain";
+};
 
 type ProjectSummary = {
   id: string;
@@ -8,6 +17,7 @@ type ProjectSummary = {
   technologies: string[];
   href: string;
   company: string;
+  thumbnail?: ImageData;
 };
 
 type SelectedProjectsProps = {
@@ -31,11 +41,23 @@ export function SelectedProjects({ locale, projects }: SelectedProjectsProps) {
               <a href={project.href}>{project.title}</a>
             </h3>
             <p>{project.summary}</p>
+            <a className="row-link" href={project.href}>
+              {detailLabel}
+              <span aria-hidden="true"> →</span>
+            </a>
           </div>
-          <a className="row-link" href={project.href}>
-            {detailLabel}
-            <span aria-hidden="true"> →</span>
-          </a>
+          {project.thumbnail ? (
+            <a
+              aria-label={`${project.title} — ${detailLabel}`}
+              className="project-thumbnail-link"
+              href={project.href}
+            >
+              <ResumeImage
+                className="project-thumbnail"
+                image={project.thumbnail}
+              />
+            </a>
+          ) : null}
         </article>
       ))}
     </div>

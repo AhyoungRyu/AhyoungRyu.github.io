@@ -5,6 +5,7 @@ import { ExperienceTimeline } from "./ExperienceTimeline";
 import { SectionHeading } from "./SectionHeading";
 import { SelectedProjects } from "./SelectedProjects";
 import { SiteShell } from "./SiteShell";
+import { ResumeImage } from "./ResumeImage";
 
 type ResumeHomeProps = {
   locale: Locale;
@@ -54,29 +55,38 @@ export function ResumeHome({ locale }: ResumeHomeProps) {
       />
 
       <section className="intro-section" id="overview">
-        <p className="intro-meta">
-          {resume.profile.role}
-          <span aria-hidden="true"> · </span>
-          {resume.profile.location}
-        </p>
-        <h1>{labels.greeting}</h1>
-        <p className="intro-summary">{resume.profile.summary}</p>
-        <div className="contact-links">
-          <a href={`mailto:${resume.profile.email}`}>
-            {resume.profile.email}
-            <span aria-hidden="true"> ↗</span>
-          </a>
-          {resume.profile.links.map((link) => (
-            <a
-              href={link.href}
-              key={link.label}
-              rel="noreferrer"
-              target="_blank"
-            >
-              {link.label}
-              <span aria-hidden="true"> ↗</span>
-            </a>
-          ))}
+        <div className="intro-layout">
+          <div className="intro-copy">
+            <p className="intro-meta">
+              {resume.profile.role}
+              <span aria-hidden="true"> · </span>
+              {resume.profile.location}
+            </p>
+            <h1>{labels.greeting}</h1>
+            <p className="intro-summary">{resume.profile.summary}</p>
+            <div className="contact-links">
+              <a href={`mailto:${resume.profile.email}`}>
+                {resume.profile.email}
+                <span aria-hidden="true"> ↗</span>
+              </a>
+              {resume.profile.links.map((link) => (
+                <a
+                  href={link.href}
+                  key={link.label}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {link.label}
+                  <span aria-hidden="true"> ↗</span>
+                </a>
+              ))}
+            </div>
+          </div>
+          <ResumeImage
+            className="profile-portrait"
+            image={resume.profile.portrait}
+            loading="eager"
+          />
         </div>
       </section>
 

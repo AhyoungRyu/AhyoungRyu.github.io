@@ -1,4 +1,13 @@
 import type { Locale } from "../types";
+import { ResumeImage } from "./ResumeImage";
+
+type ImageData = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  fit: "cover" | "contain";
+};
 
 type ExperienceItem = {
   id: string;
@@ -10,6 +19,7 @@ type ExperienceItem = {
   end: string | null;
   summary: string;
   highlights: string[];
+  logo: ImageData;
 };
 
 type ExperienceTimelineProps = {
@@ -65,6 +75,18 @@ export function ExperienceTimeline({
               ))}
             </ul>
           </div>
+          <a
+            aria-label={`${experience.company} website`}
+            className="experience-logo-link"
+            href={experience.companyUrl}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <ResumeImage
+              className="experience-logo"
+              image={experience.logo}
+            />
+          </a>
         </article>
       ))}
     </div>

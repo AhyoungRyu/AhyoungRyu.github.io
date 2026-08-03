@@ -1,5 +1,7 @@
 import type { ComponentProps } from "react";
 
+/* eslint-disable @next/next/no-img-element -- Static export uses local intrinsic-size images without a remote optimizer. */
+
 type ImageData = {
   src: string;
   alt: string;

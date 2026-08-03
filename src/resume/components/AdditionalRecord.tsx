@@ -1,4 +1,13 @@
 import type { Locale } from "../types";
+import { ResumeImage } from "./ResumeImage";
+
+type ImageData = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  fit: "cover" | "contain";
+};
 
 type AdditionalRecordProps = {
   locale: Locale;
@@ -10,6 +19,7 @@ type AdditionalRecordProps = {
       school: string;
       degree: string;
       period: string;
+      logo: ImageData;
     }[];
     languages: {
       name: string;
@@ -59,10 +69,13 @@ export function AdditionalRecord({
         <section>
           <h3>{copy.education}</h3>
           {record.education.map((education) => (
-            <div className="fact-item" key={education.school}>
-              <strong>{education.school}</strong>
-              <span>{education.degree}</span>
-              <span>{education.period}</span>
+            <div className="education-fact" key={education.school}>
+              <ResumeImage className="education-logo" image={education.logo} />
+              <div className="fact-item">
+                <strong>{education.school}</strong>
+                <span>{education.degree}</span>
+                <span>{education.period}</span>
+              </div>
             </div>
           ))}
         </section>
