@@ -144,9 +144,9 @@ export async function checkBuiltSite(rootDirectory = process.cwd()) {
         "utf8",
       ),
     );
-    if (workerConfig.compatibility_flags?.includes("nodejs_compat")) {
+    if ("compatibility_flags" in workerConfig) {
       failures.push(
-        "generated worker config must not declare the now-default nodejs_compat flag",
+        "generated worker config must omit the now-default compatibility_flags field",
       );
     }
     if (
