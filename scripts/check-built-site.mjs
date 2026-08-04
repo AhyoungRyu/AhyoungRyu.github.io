@@ -137,6 +137,30 @@ export async function checkBuiltSite(rootDirectory = process.cwd()) {
   const failures = [];
   const resumeImagePaths = new Set();
 
+  try {
+    const workerConfig = JSON.parse(
+      await readFile(
+        path.join(rootDirectory, "dist/server/wrangler.json"),
+        "utf8",
+      ),
+    );
+    if (workerConfig.compatibility_flags?.includes("nodejs_compat")) {
+      failures.push(
+        "generated worker config must not declare the now-default nodejs_compat flag",
+      );
+    }
+    if (
+      !workerConfig.compatibility_date ||
+      workerConfig.compatibility_date < "2026-08-04"
+    ) {
+      failures.push(
+        "generated worker config must use the nodejs_compat default date or newer",
+      );
+    }
+  } catch {
+    failures.push("generated worker config is missing or invalid");
+  }
+
   for (const route of expectedResumeRoutes) {
     const response = await render(worker, route);
     if (response.status !== 200) {
