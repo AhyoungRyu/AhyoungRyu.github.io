@@ -17,7 +17,7 @@
     "verify": "npm run lint && npm test && npm run test:contracts && npm run test:static && npm run test:pdf && npm run test:rendered",
     "export:static": "npm run build && node scripts/export-static-site.mjs",
     "pdf": "node scripts/generate-pdfs.mjs",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern work"
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern work --ignore-pattern .worktrees"
   },
   "dependencies": {
     "next": "^16.2.12",
