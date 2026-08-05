@@ -180,7 +180,7 @@ Expected: five `.project-evidence` lists are in normal document flow, ten items 
 
 - [ ] **Step 2: Add compact evidence styles**
 
-Use a small two-item list with muted text and accent bullets. Reduce project row and section padding, keep one supporting highlight per experience, and reduce the desktop thumbnail width from 282px to 224px. Keep mobile text at or above 0.84rem. In print, render evidence at 6.5pt with tight leading and preserve `break-inside: avoid`.
+Use a small two-item list with muted text and accent bullets. Widen the desktop document from 980px to 1120px, reduce project row and section padding, keep one supporting highlight per experience, and reduce the desktop thumbnail width from 282px to 224px. Keep mobile text at or above 0.84rem. In print, render evidence at 6.5pt with tight leading and preserve `break-inside: avoid`.
 
 - [ ] **Step 3: Run focused tests and build**
 

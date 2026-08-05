@@ -1088,7 +1088,7 @@ a:focus-visible {
 
 .site-shell {
   display: block;
-  width: min(100%, 980px);
+  width: min(100%, 1120px);
   min-height: 100vh;
   margin: 0 auto;
   border-right: 1px solid var(--line);
