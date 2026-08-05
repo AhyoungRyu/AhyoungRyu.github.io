@@ -14,6 +14,7 @@ type AdditionalRecordProps = {
   archiveHref: string;
   record: {
     openSource: string;
+    openSourceHref: string;
     teaching: string;
     education: {
       school: string;
@@ -57,7 +58,14 @@ export function AdditionalRecord({
       <div className="additional-evidence">
         <article>
           <h3>{copy.openSource}</h3>
-          <p>{record.openSource}</p>
+          <a
+            className="evidence-link"
+            href={record.openSourceHref}
+            rel="noreferrer"
+            target="_blank"
+          >
+            <p>{record.openSource}</p>
+          </a>
         </article>
         <article>
           <h3>{copy.teaching}</h3>

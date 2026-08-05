@@ -66,8 +66,15 @@ describe("ResumeHome", () => {
   it("renders concrete supporting evidence without template residue", () => {
     render(<ResumeHome locale="ko" />);
 
-    expect(screen.getByText(/104개 커밋/)).toBeTruthy();
+    const contributionLink = screen.getByRole("link", {
+      name: /338명의 기여자 중 9위.*104개 커밋.*남김/,
+    });
+
+    expect(contributionLink.getAttribute("href")).toBe(
+      "https://github.com/apache/zeppelin/graphs/contributors",
+    );
     expect(screen.getByText(/총 11시간/)).toBeTruthy();
+    expect(screen.getByText(/ApacheCon Europe과 North America에서 발표함/)).toBeTruthy();
     expect(screen.queryByText("Explore →")).toBeNull();
   });
 

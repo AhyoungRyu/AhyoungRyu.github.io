@@ -137,12 +137,14 @@ export function getResume(locale: Locale) {
     additionalRecord: {
       openSource:
         locale === "ko"
-          ? "Apache Zeppelin 커미터·PMC로 활동하며 281명의 기여자 중 9번째로 많은 104개 커밋을 남겼습니다."
-          : "As an Apache Zeppelin committer and PMC member, I made 104 commits, ranked ninth among 281 contributors.",
+          ? "Apache Zeppelin 커미터·PMC. GitHub 기준 338명의 기여자 중 9위로, 104개 커밋을 남김."
+          : "Apache Zeppelin committer and PMC member. Ranked ninth among 338 contributors with 104 commits.",
+      openSourceHref:
+        "https://github.com/apache/zeppelin/graphs/contributors",
       teaching:
         locale === "ko"
-          ? "Fast Campus에서 Apache Zeppelin 강의를 4회, 총 11시간 진행했고 ApacheCon Europe과 North America에서 발표했습니다."
-          : "I taught an 11-hour Apache Zeppelin course at Fast Campus and spoke at ApacheCon Europe and North America.",
+          ? "Fast Campus에서 Apache Zeppelin 강의를 4회, 총 11시간 진행. ApacheCon Europe과 North America에서 발표함."
+          : "Taught an 11-hour Apache Zeppelin course at Fast Campus and spoke at ApacheCon Europe and North America.",
       education: resumeContent.education.map((education) => ({
         school: education.school,
         degree: text(education.degree, locale),

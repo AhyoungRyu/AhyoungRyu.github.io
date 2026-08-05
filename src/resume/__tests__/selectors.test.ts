@@ -49,8 +49,15 @@ describe("localized resume selectors", () => {
   it("returns the supporting record used by the home page", () => {
     const record = getResume("ko").additionalRecord;
 
+    expect(record.openSource).toContain("338명의 기여자");
+    expect(record.openSource).toContain("9위");
     expect(record.openSource).toContain("104개 커밋");
+    expect(record.openSource).toMatch(/남김\.$/);
+    expect(record.openSourceHref).toBe(
+      "https://github.com/apache/zeppelin/graphs/contributors",
+    );
     expect(record.teaching).toContain("총 11시간");
+    expect(record.teaching).toMatch(/발표함\.$/);
     expect(record.education[0].school).toBe("Sookmyung Women's University");
     expect(record.languages).toHaveLength(2);
   });
