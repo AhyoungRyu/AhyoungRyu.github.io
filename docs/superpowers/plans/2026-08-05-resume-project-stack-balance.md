@@ -10,6 +10,7 @@
 
 ## Global Constraints
 
+- The Korean CakeResume at `https://www.cake.me/resumes/ahyoung-ryu-kr` is the canonical content source; English is a translation of that current Korean content, not of the outdated CakeResume English version.
 - Main-page selected projects must be exactly `ai-agent-messenger`, `chat-uikit-modernization`, `tossbank-personal-loan`, `lunit-annotation-tools`, and `zepl-performance`, in that order.
 - Experience technology lines show at most six items.
 - Project technology lines show at most five items.
@@ -272,4 +273,3 @@ git commit -m "docs: refresh balanced resume PDFs"
 Run: `npm run verify && git status --short`
 
 Expected: verification exits zero and the worktree is clean.
-

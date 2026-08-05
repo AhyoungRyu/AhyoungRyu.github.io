@@ -80,17 +80,19 @@ describe("resume content", () => {
     );
   });
 
-  it("assigns distinct thumbnails to the three selected Sendbird projects", () => {
+  it("assigns distinct thumbnails to the five balanced home projects", () => {
     const selected = resumeContent.projects.filter((project) =>
       [
         "ai-agent-messenger",
         "chat-uikit-modernization",
-        "ai-chatbot-performance",
+        "tossbank-personal-loan",
+        "lunit-annotation-tools",
+        "zepl-performance",
       ].includes(project.id),
     );
 
     expect(new Set(selected.map((project) => project.thumbnail?.src)).size).toBe(
-      3,
+      5,
     );
   });
 

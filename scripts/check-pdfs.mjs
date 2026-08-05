@@ -3,7 +3,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 const expectedPageCount = 2;
-const expectedColorImageCount = 9;
+const expectedColorImageCount = 11;
 
 export function inspectPdfBuffer(buffer) {
   const source = buffer.toString("latin1");

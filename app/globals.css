@@ -1716,11 +1716,11 @@ a:focus-visible {
   }
 
   .resume-section {
-    padding: 7mm 0;
+    padding: 6mm 0;
   }
 
   .section-heading {
-    margin-bottom: 4mm;
+    margin-bottom: 3mm;
   }
 
   .section-heading h2 {
@@ -1730,7 +1730,7 @@ a:focus-visible {
   .experience-item {
     grid-template-columns: 27mm minmax(0, 1fr) 20mm;
     gap: 5mm;
-    padding: 4mm 0;
+    padding: 3.5mm 0;
     break-inside: avoid;
   }
 
@@ -1768,7 +1768,7 @@ a:focus-visible {
   .project-row {
     grid-template-columns: 26mm minmax(0, 1fr) 42mm;
     gap: 4mm;
-    padding: 3.5mm 0;
+    padding: 3mm 0;
     break-inside: avoid;
   }
 

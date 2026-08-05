@@ -6,6 +6,8 @@ Make the main bilingual resume read as a software engineer's resume by showing t
 
 ## Scope
 
+- Treat the Korean CakeResume at `https://www.cake.me/resumes/ahyoung-ryu-kr` as the canonical and most current career source.
+- Maintain English as a translation of the current Korean content. Do not use the outdated CakeResume English version as an independent source.
 - Keep five projects on the main resume.
 - Keep two Sendbird projects: AI Agent Messenger SDK and Chat UIKit Modernization.
 - Add one project each from TossBank, Lunit, and Zepl.
@@ -73,6 +75,7 @@ Replacing the AI Chatbot project with three earlier-company projects adds two pr
 ## Accessibility and localization
 
 - Technology names stay in their canonical English form in both locales.
+- Korean claims, periods, project scope, and outcomes are authoritative; English copy must preserve the same facts without adding claims.
 - The visual separator is decorative text and does not replace meaningful labels.
 - Technology lines remain readable without color.
 - Existing headings, links, alt text, and keyboard behavior remain unchanged.
@@ -84,4 +87,3 @@ Replacing the AI Chatbot project with three earlier-company projects adds two pr
 - Rendered-site checks continue to validate all localized routes and assets.
 - PDF checks continue to require two pages and at least nine embedded color images per language.
 - A final browser and print review checks density, wrapping, thumbnails, and the absence of horizontal overflow.
-
