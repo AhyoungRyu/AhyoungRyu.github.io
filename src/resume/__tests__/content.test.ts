@@ -28,6 +28,18 @@ describe("resume content", () => {
     );
   });
 
+  it("rejects selected projects without two localized home highlights", () => {
+    const broken = structuredClone(resumeContent);
+    broken.projects[0].homeHighlights = {
+      ko: ["하나만 있음."],
+      en: ["Only one item."],
+    };
+
+    expect(validateResumeContent(broken)).toContain(
+      "projects.ai-agent-messenger needs two localized home highlights",
+    );
+  });
+
   it("uses complete local image metadata", () => {
     const images = [
       resumeContent.profile.portrait,

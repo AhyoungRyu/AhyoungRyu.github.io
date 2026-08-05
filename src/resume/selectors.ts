@@ -71,6 +71,7 @@ export function getResume(locale: Locale) {
       slug: project.slug,
       title: text(project.title, locale),
       summary: text(project.summary, locale),
+      highlights: project.homeHighlights?.[locale] ?? [],
       period: project.period,
       technologies: project.technologies,
       href: localizedPath(locale, `/projects/${project.slug}/`),
@@ -103,7 +104,7 @@ export function getResume(locale: Locale) {
       .slice(0, 4)
       .map((experience) => ({
         ...experience,
-        highlights: experience.highlights.slice(0, 2),
+        highlights: experience.highlights.slice(0, 1),
       })),
     selectedProjects,
     credibility: [

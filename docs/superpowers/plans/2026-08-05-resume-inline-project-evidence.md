@@ -16,6 +16,7 @@
 - Do not expose `자세히 보기` or `Read details` on the home page.
 - Keep project title and thumbnail links functional.
 - Preserve eleven printable images and two-page Korean and English PDFs.
+- Keep one supporting highlight in each home experience entry to avoid repeating the project evidence.
 - Do not add dependencies or client state.
 - Do not use em dashes or en dashes in newly written resume copy.
 
@@ -179,7 +180,7 @@ Expected: five `.project-evidence` lists are in normal document flow, ten items 
 
 - [ ] **Step 2: Add compact evidence styles**
 
-Use a small two-item list with muted text and accent bullets. Reduce project row vertical padding, the description margin, and the desktop thumbnail width from 282px to 248px. Keep mobile text at or above 0.84rem. In print, render evidence at 6.5pt with tight leading and preserve `break-inside: avoid`.
+Use a small two-item list with muted text and accent bullets. Reduce project row and section padding, keep one supporting highlight per experience, and reduce the desktop thumbnail width from 282px to 224px. Keep mobile text at or above 0.84rem. In print, render evidence at 6.5pt with tight leading and preserve `break-inside: avoid`.
 
 - [ ] **Step 3: Run focused tests and build**
 

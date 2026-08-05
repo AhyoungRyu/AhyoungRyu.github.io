@@ -173,6 +173,18 @@ export function validateResumeContent(content: ResumeContent): string[] {
       errors.push(`projects.${project.id} is missing localized copy`);
     }
 
+    if (
+      project.selected &&
+      (project.homeHighlights?.ko.length !== 2 ||
+        project.homeHighlights?.en.length !== 2 ||
+        project.homeHighlights.ko.some((highlight) => !highlight.trim()) ||
+        project.homeHighlights.en.some((highlight) => !highlight.trim()))
+    ) {
+      errors.push(
+        `projects.${project.id} needs two localized home highlights`,
+      );
+    }
+
     validateLinks(project.links, `projects.${project.id}.links`, errors);
     if (project.thumbnail) {
       validateImage(

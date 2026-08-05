@@ -20,12 +20,12 @@ describe("localized resume selectors", () => {
     );
   });
 
-  it("returns four compact experience entries with at most two highlights", () => {
+  it("returns four compact experience entries with one supporting highlight", () => {
     const resume = getResume("ko");
 
     expect(resume.experiences).toHaveLength(4);
     expect(
-      resume.experiences.every((experience) => experience.highlights.length <= 2),
+      resume.experiences.every((experience) => experience.highlights.length === 1),
     ).toBe(true);
   });
 
@@ -44,6 +44,25 @@ describe("localized resume selectors", () => {
     expect(getResume("en").selectedProjects.map((project) => project.id)).toEqual(
       expectedIds,
     );
+  });
+
+  it("returns two concrete home highlights for every selected project", () => {
+    for (const locale of ["ko", "en"] as const) {
+      const projects = getResume(locale).selectedProjects;
+
+      expect(
+        projects.every((project) => project.highlights.length === 2),
+      ).toBe(true);
+      expect(
+        projects.every((project) =>
+          project.highlights.every((highlight) => highlight.trim().length > 0),
+        ),
+      ).toBe(true);
+    }
+
+    const koreanProjects = getResume("ko").selectedProjects;
+    expect(koreanProjects[1]?.highlights.join(" ")).toContain("약 30%");
+    expect(koreanProjects[4]?.highlights.join(" ")).toContain("100~300%");
   });
 
   it("returns the supporting record used by the home page", () => {

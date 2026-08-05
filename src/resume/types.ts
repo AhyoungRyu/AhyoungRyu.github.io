@@ -58,6 +58,7 @@ export type Project = {
   problem: Record<Locale, string[]>;
   contributions: Record<Locale, string[]>;
   outcomes: Record<Locale, string[]>;
+  homeHighlights?: Record<Locale, string[]>;
   technologies: string[];
   links: ResumeLink[];
   selected: boolean;

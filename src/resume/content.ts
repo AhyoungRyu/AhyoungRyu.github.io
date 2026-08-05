@@ -481,6 +481,16 @@ export const resumeContent: ResumeContent = {
           "Provided on-site technical support and real-time issue response during a live U.S. A/B test.",
         ],
       },
+      homeHighlights: {
+        ko: [
+          "고객 환경에서 검증 가능한 React SDK API와 컴포넌트 구조를 설계·고도화함.",
+          "초기 PoC와 실제 사용자 A/B 테스트를 지원해 제품 피드백 주기를 단축함.",
+        ],
+        en: [
+          "Designed and evolved the React SDK API and component architecture for customer environments.",
+          "Supported early PoCs and a live A/B test to shorten the product feedback cycle.",
+        ],
+      },
       technologies: ["TypeScript", "React", "Vite", "pnpm", "CircleCI"],
       links: [{ label: "Delight AI", href: "https://delight.ai/" }],
       selected: true,
@@ -536,6 +546,16 @@ export const resumeContent: ResumeContent = {
           "Raised test coverage from 22.51% to 50%.",
           "Reduced customer issue reports by about 30%.",
           "Reduced unnecessary re-renders caused by complex state updates.",
+        ],
+      },
+      homeHighlights: {
+        ko: [
+          "5년간 누적된 React 구조를 재설계하고 유닛·통합 테스트 전략을 수립함.",
+          "테스트 커버리지를 22.51%에서 50%로 높이고 고객 이슈를 약 30% 줄임.",
+        ],
+        en: [
+          "Redesigned a React codebase with five years of accumulated legacy and established the test strategy.",
+          "Raised test coverage from 22.51% to 50% and reduced customer issues by about 30%.",
         ],
       },
       technologies: ["TypeScript", "React", "Jest", "Testing Library"],
@@ -647,6 +667,16 @@ export const resumeContent: ResumeContent = {
         en: [
           "Launched and operated the personal-loan application and management experience with TossBank's public opening.",
           "Turned onboarding, mentoring, code review, and study sessions into repeatable team practices.",
+        ],
+      },
+      homeHighlights: {
+        ko: [
+          "웹·앱 프로토콜과 웹 스크래핑 통신 모듈을 만들고 모바일 E2E 환경을 구축함.",
+          "토스뱅크 오픈에 맞춰 개인대출 신청·관리 경험을 출시하고 운영함.",
+        ],
+        en: [
+          "Built web-to-app protocols and the web-scraping communication module. Set up mobile E2E testing for launch.",
+          "Launched the personal-loan application and management experience with TossBank and continued to operate it.",
         ],
       },
       technologies: [
@@ -761,6 +791,16 @@ export const resumeContent: ResumeContent = {
           "Replaced a debt-heavy tool and created a new foundation for continued feature development and maintenance.",
         ],
       },
+      homeHighlights: {
+        ko: [
+          "기술 스택과 아키텍처를 결정하고 기존 Annotation Tool을 한 달 반 만에 재개발함.",
+          "Web Worker와 OffscreenCanvas로 대형 병리 이미지의 AI 분석 결과를 시각화함.",
+        ],
+        en: [
+          "Selected the stack and architecture, then rebuilt the existing Annotation Tool in six weeks.",
+          "Used Web Workers and OffscreenCanvas to visualize AI results on large pathology images.",
+        ],
+      },
       technologies: [
         "TypeScript",
         "React",
@@ -840,7 +880,7 @@ export const resumeContent: ResumeContent = {
           href: "https://github.com/apache/zeppelin/commits?author=AhyoungRyu",
         },
       ],
-      selected: true,
+      selected: false,
       thumbnail: images.zeppelinUi,
       gallery: [],
     },
@@ -893,6 +933,16 @@ export const resumeContent: ResumeContent = {
           "Improved key notebook interaction responsiveness by 100–300%.",
           "Eliminated page freezes during large-chart rendering.",
           "Contributed improvements back to the open-source Nivo chart library.",
+        ],
+      },
+      homeHighlights: {
+        ko: [
+          "Web Worker 데이터 파이프라인과 Canvas 기반 Nivo 차트 7종을 도입함.",
+          "주요 상호작용 속도를 100~300% 개선하고 대형 그래프의 페이지 멈춤을 해결함.",
+        ],
+        en: [
+          "Introduced a Web Worker data pipeline and seven canvas-based Nivo chart types.",
+          "Improved key interaction speed by between 100% and 300% and eliminated page freezes on large graphs.",
         ],
       },
       technologies: [

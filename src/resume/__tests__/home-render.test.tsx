@@ -41,6 +41,23 @@ describe("ResumeHome", () => {
     expect(container.querySelector(".archive-banner")).toBeNull();
   });
 
+  it("shows project role and outcome evidence without a detail CTA", () => {
+    const { container } = render(<ResumeHome locale="ko" />);
+
+    expect(container.querySelectorAll(".project-evidence")).toHaveLength(5);
+    expect(container.querySelectorAll(".project-evidence li")).toHaveLength(10);
+    expect(screen.getByText(/고객 이슈를 약 30% 줄임/)).toBeTruthy();
+    expect(screen.getByText(/상호작용 속도를 100~300% 개선/)).toBeTruthy();
+    expect(screen.queryByText("자세히 보기")).toBeNull();
+    expect(screen.queryByText("Read details")).toBeNull();
+    expect(container.querySelector(".row-link")).toBeNull();
+    expect(
+      screen
+        .getByRole("link", { name: "AI Agent Messenger SDK" })
+        .getAttribute("href"),
+    ).toBe("/ko/projects/ai-agent-messenger/");
+  });
+
   it("renders limited technologies for every experience and project", () => {
     const { container } = render(<ResumeHome locale="en" />);
     const experienceTech = Array.from(

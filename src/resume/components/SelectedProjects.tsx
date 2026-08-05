@@ -14,6 +14,7 @@ type ProjectSummary = {
   id: string;
   title: string;
   summary: string;
+  highlights: string[];
   period: string;
   technologies: string[];
   href: string;
@@ -27,7 +28,8 @@ type SelectedProjectsProps = {
 };
 
 export function SelectedProjects({ locale, projects }: SelectedProjectsProps) {
-  const detailLabel = locale === "ko" ? "자세히 보기" : "Read details";
+  const thumbnailLabel =
+    locale === "ko" ? "프로젝트 기록 보기" : "project record";
 
   return (
     <div className="project-list">
@@ -42,15 +44,16 @@ export function SelectedProjects({ locale, projects }: SelectedProjectsProps) {
               <a href={project.href}>{project.title}</a>
             </h3>
             <p>{project.summary}</p>
+            <ul className="project-evidence">
+              {project.highlights.map((highlight) => (
+                <li key={highlight}>{highlight}</li>
+              ))}
+            </ul>
             <TechnologyLine limit={5} technologies={project.technologies} />
-            <a className="row-link" href={project.href}>
-              {detailLabel}
-              <span aria-hidden="true"> →</span>
-            </a>
           </div>
           {project.thumbnail ? (
             <a
-              aria-label={`${project.title} — ${detailLabel}`}
+              aria-label={`${project.title} ${thumbnailLabel}`}
               className="project-thumbnail-link"
               href={project.href}
             >
