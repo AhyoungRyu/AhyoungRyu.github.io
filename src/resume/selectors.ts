@@ -50,7 +50,9 @@ export function getResume(locale: Locale) {
   const homeProjectIds = [
     "ai-agent-messenger",
     "chat-uikit-modernization",
-    "ai-chatbot-performance",
+    "tossbank-personal-loan",
+    "lunit-annotation-tools",
+    "zepl-performance",
   ];
   const apacheProject = resumeContent.projects.find(
     (project) => project.id === "apache-zeppelin",

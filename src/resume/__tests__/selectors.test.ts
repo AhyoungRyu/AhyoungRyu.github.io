@@ -29,14 +29,21 @@ describe("localized resume selectors", () => {
     ).toBe(true);
   });
 
-  it("limits the home page to three selected projects", () => {
-    expect(getResume("ko").selectedProjects).toHaveLength(3);
-    expect(getResume("en").selectedProjects).toHaveLength(3);
-    expect(getResume("ko").selectedProjects.map((project) => project.id)).toEqual([
+  it("returns the balanced five-project home selection", () => {
+    const expectedIds = [
       "ai-agent-messenger",
       "chat-uikit-modernization",
-      "ai-chatbot-performance",
-    ]);
+      "tossbank-personal-loan",
+      "lunit-annotation-tools",
+      "zepl-performance",
+    ];
+
+    expect(getResume("ko").selectedProjects.map((project) => project.id)).toEqual(
+      expectedIds,
+    );
+    expect(getResume("en").selectedProjects.map((project) => project.id)).toEqual(
+      expectedIds,
+    );
   });
 
   it("returns the supporting record used by the home page", () => {
