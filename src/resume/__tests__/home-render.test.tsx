@@ -37,8 +37,30 @@ describe("ResumeHome", () => {
 
     expect(screen.queryByText("일하는 방식")).toBeNull();
     expect(container.querySelectorAll(".experience-item")).toHaveLength(4);
-    expect(container.querySelectorAll(".project-row")).toHaveLength(3);
+    expect(container.querySelectorAll(".project-row")).toHaveLength(5);
     expect(container.querySelector(".archive-banner")).toBeNull();
+  });
+
+  it("renders limited technologies for every experience and project", () => {
+    const { container } = render(<ResumeHome locale="en" />);
+    const experienceTech = Array.from(
+      container.querySelectorAll<HTMLElement>(
+        ".experience-item .technology-line",
+      ),
+    );
+    const projectTech = Array.from(
+      container.querySelectorAll<HTMLElement>(".project-row .technology-line"),
+    );
+
+    expect(experienceTech).toHaveLength(4);
+    expect(projectTech).toHaveLength(5);
+    expect(experienceTech[0]?.textContent).toContain(
+      "TechTypeScript · React · Vite · pnpm · Yarn Berry · GitHub Actions",
+    );
+    expect(experienceTech[0]?.textContent).not.toContain("CircleCI");
+    expect(projectTech[0]?.textContent).toContain(
+      "TechTypeScript · React · Vite · pnpm · CircleCI",
+    );
   });
 
   it("renders concrete supporting evidence without template residue", () => {
@@ -65,16 +87,16 @@ describe("ResumeHome", () => {
     ).toBeTruthy();
   });
 
-  it("renders three distinct local project thumbnails", () => {
+  it("renders five distinct local project thumbnails", () => {
     const { container } = render(<ResumeHome locale="en" />);
     const thumbnails = Array.from(
       container.querySelectorAll<HTMLImageElement>(".project-thumbnail"),
     );
 
-    expect(thumbnails).toHaveLength(3);
+    expect(thumbnails).toHaveLength(5);
     expect(
       new Set(thumbnails.map((image) => image.getAttribute("src"))).size,
-    ).toBe(3);
+    ).toBe(5);
     expect(thumbnails.every((image) => image.getAttribute("width"))).toBe(true);
     expect(thumbnails.every((image) => image.getAttribute("height"))).toBe(
       true,
@@ -89,7 +111,7 @@ describe("ResumeHome", () => {
       ),
     );
 
-    expect(printableImages).toHaveLength(9);
+    expect(printableImages).toHaveLength(11);
     expect(
       printableImages.every((image) => image.getAttribute("loading") === "eager"),
     ).toBe(true);

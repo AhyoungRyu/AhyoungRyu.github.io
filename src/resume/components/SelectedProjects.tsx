@@ -1,5 +1,6 @@
 import type { Locale } from "../types";
 import { ResumeImage } from "./ResumeImage";
+import { TechnologyLine } from "./TechnologyLine";
 
 type ImageData = {
   src: string;
@@ -41,6 +42,7 @@ export function SelectedProjects({ locale, projects }: SelectedProjectsProps) {
               <a href={project.href}>{project.title}</a>
             </h3>
             <p>{project.summary}</p>
+            <TechnologyLine limit={5} technologies={project.technologies} />
             <a className="row-link" href={project.href}>
               {detailLabel}
               <span aria-hidden="true"> →</span>

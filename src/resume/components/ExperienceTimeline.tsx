@@ -1,5 +1,6 @@
 import type { Locale } from "../types";
 import { ResumeImage } from "./ResumeImage";
+import { TechnologyLine } from "./TechnologyLine";
 
 type ImageData = {
   src: string;
@@ -19,6 +20,7 @@ type ExperienceItem = {
   end: string | null;
   summary: string;
   highlights: string[];
+  technologies: string[];
   logo: ImageData;
 };
 
@@ -74,6 +76,10 @@ export function ExperienceTimeline({
                 <li key={highlight}>{highlight}</li>
               ))}
             </ul>
+            <TechnologyLine
+              limit={6}
+              technologies={experience.technologies}
+            />
           </div>
           <a
             aria-label={`${experience.company} website`}
